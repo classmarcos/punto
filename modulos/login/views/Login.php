@@ -1,39 +1,85 @@
 <?php
+$usuario_in = array(
+    'name'        => 'usuario',
+    'id'          => 'username',
+    'value'       => @set_value('usuario'),
+    'class'       => 'form-control',
+    'placeholder' => 'Usuario o correo',
+);
 
-        $usuario_in = array(
+$clave = array(
+    'name'        => 'clave',
+    'id'          => 'password',
+    'value'       => @set_value('clave'),
+    'class'       => 'form-control',
+    'placeholder' => 'Contraseña',
 
-            'name'        =>'usuario',
-            'id'          =>'username',
-            'value'       =>@set_value('usuario'),
-            'class'       =>'form-control',
-            'placeholder' =>'Digiete Usuario',
-
-        );
-
-        $clave = array(
-            'name'        =>'clave',
-            'id'          =>'password',
-            'value'       =>@set_value('clave'),
-            'class'       =>'form-control',
-            'placeholder' =>'Digiete Contraseña',
-
-        );
+);
 ?>
 
 <div class="contenedor_login">
-         <?php
-            if(!$this->session->userdata('login'));
-         ?>
+
+    <?php
+    if (!$this->session->userdata('login')):
+    ?>
+
+    <?php $class = array('id' => 'login', 'class' => 'form-login'); ?>
+    <?php echo form_open_multipart('login/entrar',$class);?>
+
+    <h2 class="form-login-heading">
+        <img src="<?php echo base_url();?>public/img/logo/edos.png" width="80" height="60">
+        Ingreso al Sistema
+    </h2>
+    <div class="login-wrap">
+        <div id="msj_alert">
+            <?php echo $this->session->flashdata('denegado'); ?>
+        </div>
+        <div class="form-group">
+            <div class="input-group">
+                     <span class="input-group-addon">
+                      <i class="fa fa-user"></i>
+                    </span>
+                <?php echo form_input($usuario_in); ?>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="input-group">
+                     <span class="input-group-addon">
+                      <i class="fa fa-lock"></i>
+                    </span>
+                <?php echo form_password($clave); ?>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-theme btn-block"><i class="fa fa-check-circle"></i> Iniciar Sesión</button>
+
+        <?php echo form_close(); ?>
+
+        <label class="checkbox">
+            <a href="#">¿Olvidaste Tu Contraseña?</a>
+        </label>
+
+        <hr>
 
         <?php
-            $class = array('id'=>'login', 'class'=>'form-login');
-         ?>
+        else:
 
-         <?php echo form_open_multipart('login/entrar',$class);?>
+        ?>
+        <?php echo $this->session->flashdata('denegado'); ?>
+        Bienvenido
+        </p>
+        <?php echo $this->session->userdata('nombre').' '.$this->session->userdata('apellido').''; ?>
+        </p>
+        <a href="<?php echo base_url();?>admin">Ir al Panel Administrador</a>
+        </p>
+        <a href="<?php echo base_url();?>admin/salir">Cerrar Seccion</a>
 
-    <h2 class="form-login-headingd">
-        <img src="<?php base_url();?> public/img/logo/edos.png" width="80" height="60">
-        Ingrego al Sistema
-    </h2>
+        <?php
 
-</div>
+        endif;
+        ?>
+
+
+    </div>
+
