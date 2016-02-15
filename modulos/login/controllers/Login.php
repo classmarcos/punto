@@ -12,23 +12,6 @@ class Login extends MX_Controller {
 		$this->load->library('mi_session');
 		$this->load->helper('cookie');
 
-		//$this->mi_session->activo();
-
-		if($this->input->is_ajax_request())
-		{
-			if ($this->input->post('recargar') == 1)
-			{
-				return TRUE;
-			}
-			else
-			{
-				$this->mi_session->verificar_inactividad();
-			}
-		}
-		else
-		{
-			$this->mi_session->verificar_inactividad();
-		}
 	}
 
 	function index()
