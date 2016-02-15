@@ -31,12 +31,12 @@ class Login extends MX_Controller {
 		}
 	}
 
-
 	function index()
 	{
 		$data['titulo']  = 'Iniciar Sección';
-		$data['contenido'] = 'login';
+        $data['contenido'] = 'login';
 		$this->load->view('plantilla_admin',$data);
+
 	}
 
 	function entrar()
