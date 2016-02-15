@@ -10,7 +10,11 @@ class Login extends MX_Controller{
 	
 	function __construct(){
 		parent::__construct();
+		$this->load->model('global_model');
+		$this->load->library('form_validation');
+		$this->load->library('jquery_pagination');
 		$this->load->library('mi_session');
+		$this->load->helper('cookie');
 
 		if($this->input->is_ajax_request()){
 			if($this->input->post('recargar')==1){
