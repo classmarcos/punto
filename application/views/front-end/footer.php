@@ -1,7 +1,6 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: suarez
- * Date: 15/02/2016
- * Time: 10:25
- */
+</section>
+
+<footer class="site-footer">
+    <div class="text-center">
+        Proyecto Telenord
+</footer>

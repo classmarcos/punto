@@ -1,7 +1,19 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: suarez
- * Date: 15/02/2016
- * Time: 10:26
- */
+<div class="modal fade bs-example-modal-lg" id="generalmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">Datos</h4>
+            </div>
+            <div class="modal-body">
+                <p class="cuerpoModal"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default btn-sm" data-dismiss="modal"><i class="fa fa-times"></i> Cerrar</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+<div class="modalbloqueo fade" id="bloquear" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div> 
