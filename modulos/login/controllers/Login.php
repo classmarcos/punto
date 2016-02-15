@@ -63,7 +63,79 @@ class Login extends MX_Controller{
 
 	function verificar_session(){
 		if($this->input->is_ajax_request()){
-			
+
+			if($this->mi_session->verificar_session()==true){
+				$fechaGuardada= $this->session->userdata('fechainicio');
+				$ahora = FECHAGESTOR;
+				$tiempo_transcurrido = (strtotime($ahora) - strtotime($fechaGuardada));
+
+				echo json_encode(array('tiempoinactivo' => $tiempo_transcurrido ));
+			}
+			else{
+				echo json_encode(array('session' => false ));
+			}
+		}
+		else{
+			show_404();
+		}
+	}
+
+	function estado_sistema(){
+		$estado = 1;
+
+		if($estado ==1){
+			echo json_encode(array('getEstadoSistema' => 1));
+		}
+		else{
+			echo json_encode(array('getEstadoSistema' => 0 ));
+		}
+	}
+
+	function bloquear_sistema(){
+		if($this->input->is_ajax_request()){
+			$this->salir();
+		}
+		else{
+			show_404();
+		}
+	}
+
+	function mensajes_sistema(){
+		if($this->input->is_ajax_request()){
+			if($this->input->post('updatemensaje')){
+				echo $this->input->post('updatemensaje');
+			}
+			else{
+				$data = array('useremisor' =>'villate' ,'mensaje'=>'hola como estas', );
+				$datos[] = $data;
+				echo json_encode(array('getMsjAlertas' => $datos ));
+			}
+		}
+		else{
+			show_404();
+		}
+	}
+
+	function salir(){
+		if($this->input->is_ajax_request()){
+			$this->mi_session->salir();
+		}
+		else{
+			show_404();
+		}
+	}
+
+	function veryiniciosession(){
+		if($this->input->is_ajax_request()){
+			if($this->mi_session->verificar_session()==true){
+				echo '1';
+			}
+			else{
+				echo '0';
+			}
+		}
+		else{
+			show_404();
 		}
 	}
 
