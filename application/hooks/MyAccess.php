@@ -26,7 +26,7 @@ if ( ! function_exists('autentificar')) {
             echo $CI->output->get_output();
         }
         else {
-            if($CI->session->userdata('usuario')) {
+            if($CI->session->userdata('NombreUsuario')) {
                 if(autorizar()) {
                     echo $CI->output->get_output();
                 }

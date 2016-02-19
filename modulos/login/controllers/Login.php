@@ -29,14 +29,20 @@ class Login extends MX_Controller {
 		{
 			$this->mi_session->verificar_inactividad();
 		}
-
 	}
 
 	function index()
 	{
-		$data['titulo']  = 'Iniciar Sección';
-        $data['contenido'] = 'login';
-		$this->load->view('plantilla_admin',$data);
+		/*$data['titulo']  = 'Iniciar Sección';
+		$data['contenido'] = 'login';
+		$this->load->view('plantilla_admin',$data);*/
+
+		$stringCriterio = "g0551001a%";
+		$stringImei = "170";
+
+		var_dump($resultado = $this->global_model->consultacliente($stringCriterio,$stringImei));
+
+		//var_dump($respuesta = $this->mi_session->entrar($usuario, $clave));
 
 	}
 

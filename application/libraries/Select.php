@@ -8,6 +8,12 @@ class Select
     }
 
 
+
+
+
+
+
+
     function grupos($id_grupo=NULL)
     {
         $grupos = $this->CI->db->get('grupos');
@@ -64,7 +70,7 @@ class Select
 
     function mostrar_usuario($id=NULL)
     {
-        $consulta = $this->CI->db->get_where('usuarios', array('id' => $id));
+        $consulta = $this->CI->db->get_where('usuusuarios', array('Codigo' => $id));
         if ($consulta->num_rows() > 0)
         {
             foreach ($consulta->result() as $r)

@@ -87,13 +87,13 @@ $totalpagar = array(
             <div class="col-lg-12">
                 <div class="form-panel">
 
-                    <ol class="breadcrumb">
+                    <!--<ol class="breadcrumb">
                         <li class="active">Registro de Compra</li>
                         <li class="active">Apertura de Caja <i class="fa fa-money"></i> <span class="badge bg-theme">Bs.F.<?php echo APERTURACAJA ?></span></li>
                         <li class="active">Caja chica <i class="fa fa-money"></i> <span class="badge bg-theme">Bs.F.<?php echo CAJACHICA ?></span></li>
                         <li class="active">Monto Maximo <i class="fa fa-money"></i> <span class="badge bg-theme">Bs.F.<?php echo MONTOMAXIMO ?></span></li>
                         <li class="active">Monto Minimo <i class="fa fa-money"></i> <span class="badge bg-theme">Bs.F.<?php echo MONTOMINIMO ?></span></li>
-                    </ol>
+                    </ol>-->
 
                     <div class="row">
                         <div class="col-md-6">

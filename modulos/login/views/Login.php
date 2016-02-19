@@ -12,7 +12,7 @@ $clave = array(
     'id'          => 'password',
     'value'       => @set_value('clave'),
     'class'       => 'form-control',
-    'placeholder' => 'Contraseña',
+    'placeholder' => 'Contrase&ntilde;a',
 
 );
 ?>
@@ -52,12 +52,12 @@ $clave = array(
             </div>
         </div>
 
-        <button type="submit" class="btn btn-theme btn-block"><i class="fa fa-check-circle"></i> Iniciar Sesión</button>
+        <button type="submit" class="btn btn-theme btn-block"><i class="fa fa-check-circle"></i> Iniciar Sesi&oacute;n</button>
 
         <?php echo form_close(); ?>
 
         <label class="checkbox">
-            <a href="#">¿Olvidaste Tu Contraseña?</a>
+            <a href="#">&#191;Olvidaste Tu Contrase&ntilde;a?</a>
         </label>
 
         <hr>

@@ -6,7 +6,7 @@ class Configuracion
     {
         $this->CI = & get_instance();
 
-        $consultaconfig = $this->CI->db->get('parametros');
+       /* $consultaconfig = $this->CI->db->get('parametros');
 
         foreach ($consultaconfig->result() as $filaconfig)
         {
@@ -17,7 +17,7 @@ class Configuracion
             define("MONTOMAXIMO", $filaconfig->monto_maximo);
             define("MONTOCONSUMIBLE", $filaconfig->monto_consumible);
             define("ESTADOCAJA", $filaconfig->estado_caja);
-        }
+        }*/
 
         setlocale(LC_ALL, 'es_VE');
         // Setea el huso horario del servidor...

@@ -69,16 +69,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 | The $query_builder variables lets you determine whether or not to load
 | the query builder class.
-*/
+*//*
 $active_group = 'default';
 $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => 'root',
-	'password' => 'password',
-	'database' => 'caja_chica',
+	'hostname' => '',
+	'username' => '',
+	'password' => '',
+	'database' => '',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
@@ -93,4 +93,56 @@ $db['default'] = array(
 	'stricton' => FALSE,
 	'failover' => array(),
 	'save_queries' => TRUE
-);
+
+$usuario = 'admins';
+        $clave = '21232f297a57a5a743894a0e4a801fc3';//admin
+        //$clave = '202cb962ac59075b964b07152d234b70';//123
+
+);*/
+
+
+$active_group = 'prueba'; # Conexión principal
+$active_record = TRUE;
+
+// Nuestra primera base de datos y principal:
+$db['default']['dns'] = '';
+$db['default']['hostname'] = '';
+$db['default']['username'] = '';
+$db['default']['password'] = '';
+$db['default']['database'] = '';
+$db['default']['dbdriver'] = 'mysqli';
+$db['default']['dbprefix'] = '';
+$db['default']['pconnect'] = FALSE; # Recomendado para poder trabajar con ambas conexiones en paralelo
+$db['default']['db_debug'] = (ENVIRONMENT !== 'production');
+$db['default']['cache_on'] = FALSE;
+$db['default']['cachedir'] = '';
+$db['default']['char_set'] = 'utf8';
+$db['default']['dbcollat'] = 'utf8_general_ci';
+$db['default']['swap_pre'] = '';
+$db['default']['encrypt'] = FALSE;
+$db['default']['compress'] = FALSE;
+$db['default']['stricton'] = FALSE;
+$db['default']['failover'] = array();
+$db['default']['save_queries'] = TRUE;
+
+// Nuestra sefunda base de datos y principal:
+$db['prueba']['dns'] = '';
+$db['prueba']['hostname'] = '';
+$db['prueba']['username'] = '';
+$db['prueba']['password'] = '';
+$db['prueba']['database'] = '';
+$db['prueba']['dbdriver'] = 'mysqli';
+$db['prueba']['dbprefix'] = '';
+$db['prueba']['pconnect'] = FALSE; # Recomendado para poder trabajar con ambas conexiones en paralelo
+$db['prueba']['db_debug'] = (ENVIRONMENT !== 'production');
+$db['prueba']['cache_on'] = FALSE;
+$db['prueba']['cachedir'] = '';
+$db['prueba']['char_set'] = 'utf8';
+$db['prueba']['dbcollat'] = 'utf8_general_ci';
+$db['prueba']['swap_pre'] = '';
+$db['prueba']['encrypt'] = FALSE;
+$db['prueba']['compress'] = FALSE;
+$db['prueba']['stricton'] = FALSE;
+$db['prueba']['failover'] = array();
+$db['prueba']['save_queries'] = TRUE;
+
