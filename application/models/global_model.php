@@ -782,6 +782,39 @@ class Global_model extends CI_Model {
         return $consulta->num_rows();
     }
 
+    function filas_paginada1($abuscar) {
+
+        $this->db->like('nombre', $abuscar, 'both');
+        $this->db->or_like('apellidos', $abuscar, 'after');
+        $this->db->or_like('cedula', $abuscar, 'after');
+        $this->db->or_like('direccion', $abuscar, 'before');
+
+        $consulta = $this->db->get('clientes');
+        return $consulta->num_rows();
+    }
+
+    function total_posts_paginados1($abuscar, $por_pagina, $segmento)
+    {
+
+        $this->db->like('nombre', $abuscar, 'both');
+        $this->db->or_like('apellidos', $abuscar, 'after');
+        $this->db->or_like('cedula', $abuscar, 'after');
+        $this->db->or_like('direccion', $abuscar, 'before');
+
+        $consulta = $this->db->get('clientes', $por_pagina, $segmento);
+
+        if($consulta->num_rows() > 0)
+        {
+            return $consulta->result();
+        }
+        else
+        {
+            $datos["error"] = TRUE;
+        }
+        return $datos;
+    }
+
+
     function total_posts_paginados($abuscar, $por_pagina, $segmento)
     {
 

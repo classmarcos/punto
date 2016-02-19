@@ -27,8 +27,8 @@ $clave = array(
     <?php echo form_open_multipart('login/entrar',$class);?>
 
     <h2 class="form-login-heading">
-        <img src="<?php echo base_url();?>public/img/logo/edos.png" width="80" height="60">
-        Ingreso al Sistema
+       
+        Ingreso al Sistema de Telenord
     </h2>
     <div class="login-wrap">
         <div id="msj_alert">

@@ -62,6 +62,22 @@ class Select
         }
     }
 
+      function mostrar_clientes($id=NULL)
+    {
+        $consulta = $this->CI->db->get_where('clientes', array('id' => $id));
+        if ($consulta->num_rows() > 0)
+        {
+            foreach ($consulta->result() as $r)
+            {
+                return $r->nombre.' '.$r->apellidos;
+            }
+        }
+        else
+        {
+            return 'No se encontraron resultados';
+        }
+    }
+
     function mostrar_usuario($id=NULL)
     {
         $consulta = $this->CI->db->get_where('usuarios', array('id' => $id));
