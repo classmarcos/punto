@@ -1,6 +1,7 @@
 <section id="main-content">
           <section class="wrapper">
 
+<<<<<<< HEAD
               <div class="row">
                   <div class="col-lg-12 main-chart">
                   
@@ -18,6 +19,29 @@
                             <div class="white-panel pn">
                                 <div class="white-header">
                                     <h5>Generar compras</h5>
+=======
+        <div class="row">
+            <div class="col-lg-12 main-chart">
+
+              <!--  <ol class="breadcrumb">
+                    <li class="active">Principal</li>
+                    <li class="active">Apertura de Caja <i class="fa fa-money"></i> <span class="badge bg-theme">Bs.F.<?php echo APERTURACAJA ?></span></li>
+                    <li class="active">Caja chica <i class="fa fa-money"></i> <span class="badge bg-theme">Bs.F.<?php echo CAJACHICA ?></span></li>
+                    <li class="active">Monto Maximo <i class="fa fa-money"></i> <span class="badge bg-theme">Bs.F.<?php echo MONTOMAXIMO ?></span></li>
+                    <li class="active">Monto Minimo <i class="fa fa-money"></i> <span class="badge bg-theme">Bs.F.<?php echo MONTOMINIMO ?></span></li>
+                </ol>-->
+
+                <div class="row mt">
+                    <!-- SERVER STATUS PANELS -->
+                    <div class="col-md-3 col-sm-3 mb">
+                        <div class="white-panel pn">
+                            <div class="white-header">
+                                <h5>Generar compras</h5>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6 col-xs-6 goleft">
+                                    <p><i class="fa fa-heart"></i> 1</p>
+>>>>>>> origin/master
                                 </div>
                                 <div class="row">
                                     <div class="col-sm-6 col-xs-6 goleft">

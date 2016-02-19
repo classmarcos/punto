@@ -5,23 +5,35 @@ class Mi_session
     public function __construct()
     {
         $this->CI = & get_instance();
+
     }
 
     public function entrar($usuario, $clave)
     {
+
+        /*$usuario = 'l';
+        $clave = '21232f297a57a5a743894a0e4a801fc3';//admin
+        $clave = '202cb962ac59075b964b07152d234b70';//123*/
+
+
+
         $datos = array();
 
         $limit = 1;
-        $this->CI->db->select('usuario,intentos,correo, nombre, foto,apellido,id,tipo_operador');
-        $this->CI->db->where("(usuario = '$usuario' OR correo = '$usuario') 
-                   		 AND password = '$clave'");
-        $consulta = $this->CI->db->get('usuarios',$limit);
+        $this->CI->db->select('Compania,Codigo,NombreUsuario,NombresU,Perfil,Intentos');
+        $this->CI->db->where("NombreUsuario = '$usuario'
+                   		 AND Clave = '$clave'");
+        $consulta = $this->CI->db->get('usuusuarios',$limit);
 
-        //$estado = $this->CI->db->get_where('usuarios', array('usuario' => $usuario, 'password' => $clave, 'estado' => 1), $limit);  
-        $this->CI->db->select('usuario, estado');
-        $this->CI->db->where("(usuario = '$usuario' OR correo = '$usuario')
-                   		 AND password = '$clave' AND estado = '1'");
-        $estado = $this->CI->db->get('usuarios',$limit);
+        //$estado = $this->CI->db->get_where('usuarios', array('usuario' => $usuario, 'password' => $clave, 'estado' => 1), $limit);
+        $this->CI->db->select('NombreUsuario, Activo');
+        $this->CI->db->where("NombreUsuario = '$usuario'
+                   		 AND Clave = '$clave' AND Activo = '1'");
+        $estado = $this->CI->db->get('usuusuarios',$limit);
+
+
+
+
 
         if($consulta->num_rows() > 0)
         {
@@ -30,20 +42,17 @@ class Mi_session
                 $consulta = $consulta->row();
                 $data = array(
                     'login' => TRUE,
-                    'operador' => $consulta->tipo_operador,
-                    'correo' => $consulta->correo,
-                    'nombre' => $consulta->nombre,
-                    'foto' => $consulta->foto,
-                    'apellido' => $consulta->apellido,
-                    'usuario' => $consulta->usuario,
-                    'id_usuario' => $consulta->id,
+                    'operador' => $consulta->Perfil,
+                    'nombre' => $consulta->NombresU,
+                    'usuario' => $consulta->NombreUsuario,
+                    'id_usuario' => $consulta->Codigo,
                     'fechainicio' => FECHAGESTOR,
                 );
                 $this->CI->session->set_userdata($data);
 
-                $this->CI->db->set('intentos', NULL);
-                $this->CI->db->where("(usuario = '$usuario' OR correo = '$usuario')");
-                $this->CI->db->update('usuarios');
+                $this->CI->db->set('Intentos', NULL);
+                $this->CI->db->where("NombreUsuario = '$usuario' ");
+                $this->CI->db->update('usuusuarios');
             }
             else
             {
@@ -53,22 +62,22 @@ class Mi_session
         else
         {
             //$intento = $this->CI->db->get_where('usuarios', array('usuario' => $usuario),$limit);
-            $this->CI->db->select('usuario,intentos');
-            $this->CI->db->where("(usuario = '$usuario' OR correo = '$usuario')");
-            $intento = $this->CI->db->get('usuarios',$limit);
+            $this->CI->db->select('NombreUsuario, Intentos');
+            $this->CI->db->where("NombreUsuario = '$usuario'");
+            $intento = $this->CI->db->get('usuusuarios',$limit);
 
             if($intento->num_rows() > 0)
             {
                 foreach ($intento->result() as $r)
                 {
-                    $verificarintentos = $r->intentos;
+                    $verificarintentos = $r->Intentos;
                 }
 
                 if ($verificarintentos == 3)
                 {
-                    $this->CI->db->set('estado', 2);
-                    $this->CI->db->where("(usuario = '$usuario' OR correo = '$usuario')");
-                    $this->CI->db->update('usuarios');
+                    $this->CI->db->set('Activo', 0);
+                    $this->CI->db->where("NombreUsuario = '$usuario'");
+                    $this->CI->db->update('usuusuarios');
 
                     $datos['error'] = '<div class="alert alert-danger"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button> <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> Sistema Bloqueado Comuniquese con el Administrador</div>';
                 }
@@ -78,11 +87,12 @@ class Mi_session
                     $contador = $verificarintentos +1;
                     $total = $restar - $contador;
 
-                    $this->CI->db->set('intentos', $contador);
-                    $this->CI->db->where("(usuario = '$usuario' OR correo = '$usuario')");
-                    $this->CI->db->update('usuarios');
+                    $this->CI->db->set('Intentos', $contador);
+                    $this->CI->db->where("NombreUsuario = '$usuario'");
+                    $this->CI->db->update('usuusuarios');
 
-                    $datos['error'] = '<div class="alert alert-danger"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button> <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> La Contraseña es Incorrecta Te quedan <b>'.$total.'</b> Intentos</div>';
+                    $datos['error'] = '<div class="alert alert-danger"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button> <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> La Contrase&ntilde;a es Incorrecta Te quedan <b>'.$total.'</b> Intentos</div>';
+
                 }
             }
             else

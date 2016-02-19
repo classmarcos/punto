@@ -32,6 +32,8 @@ class Global_model extends CI_Model {
         }
     */
 
+
+
     public function obtener_rango_fecha($fecha=NULL, $condicion1=NULL, $condicion2 =NULL, $agrupar=NULL, $campo=NULL,$ordenar=NULL,$tipo=NULL, $suma=NULL,$mesnombre=NULL)
     {
 
