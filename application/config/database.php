@@ -101,7 +101,7 @@ $usuario = 'admins';
 );*/
 
 
-$active_group = 'prueba'; # Conexión principal
+$active_group = ''; # Conexión principal
 $active_record = TRUE;
 
 // Nuestra primera base de datos y principal:
