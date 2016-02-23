@@ -164,13 +164,7 @@ $montoapagar = array(
 
           <input type="hidden" name="Contrato" value="<?php echo $r->Contrato?>">
 
-             <div class="control-group">
-                  <label class="control-label"></label>
-                  <div class="controls">
-
-                     <?php echo form_button(array('type'=>'submit', 'content'=>' Imprimir <i class="fa fa-print"></i> ',  'id' => 'fenviar', 'class'=>'btn btn-lg btn-info btn-block')); ?>
-                  </div>
-          </div>        
+                 
 
      </div>    
 
@@ -248,14 +242,17 @@ $montoapagar = array(
 
 				 <input type="hidden" name="Contrato" value="<?php echo $r->Contrato?>">
 
-         		 <div class="control-group">
-                  <label class="control-label"></label>
-                  <div class="controls">
-
-                     <?php echo form_button(array('type'=>'submit', 'content'=>' Pagar <i class="fa fa-money"></i> ',  'id' => 'fenviar', 'class'=>'btn btn-lg btn-info btn-block')); ?>
-                  </div>
-          </div>        
+         		       
       </div>
+      <div class="col-md-5 col-md-offset-0" style=" position: relative; top: 0px; left: 250px;>
+         <div class="control-group" ">
+                    <label class="control-label"></label>
+                    <div class="controls">
+
+                       <?php echo form_button(array('type'=>'submit', 'content'=>' Pagar <i class="fa fa-money"></i> ',  'id' => 'fenviar', 'class'=>'btn btn-lg btn-info btn-block')); ?>
+                    </div>
+            </div>
+        </div> 
     </div>   
   
     <?php echo form_close(); ?>
