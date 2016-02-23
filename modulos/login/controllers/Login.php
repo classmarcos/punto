@@ -12,6 +12,9 @@ class Login extends MX_Controller {
 		$this->load->library('mi_session');
 		$this->load->helper('cookie');
 
+
+		//$this->load->model('mdl_user_validate');
+
 		//$this->mi_session->activo();
 
 		if($this->input->is_ajax_request())
@@ -68,6 +71,8 @@ class Login extends MX_Controller {
 			else
 			{
 				$respuesta = $this->mi_session->entrar($this->input->post('usuario'), $this->input->post('clave'));
+
+				//$respuesta = $this-> mdl_user_validate(array('usuario' =>$this->input->post('usuario') ,'clave'=>$this->input->post('clave') ));
 
 				if(!isset($respuesta['error']))
 				{
