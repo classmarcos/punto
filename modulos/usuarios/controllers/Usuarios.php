@@ -765,7 +765,18 @@ class Usuarios extends MX_Controller {
     	}	
     }
 
-    function buscarusuario($offset=0)
+
+
+	function hola()
+	{
+		var_dump($this->global_model->filas_paginada($this->input->post('buscarusuario')));
+
+		var_dump($this->global_model->total_posts_paginados($this->input->post('buscarusuario')));
+	}
+
+
+
+	function buscarusuario()
     {
     	if($this->input->is_ajax_request())
         {
@@ -775,7 +786,7 @@ class Usuarios extends MX_Controller {
 	    	}
 	    	else
 	    	{
-	    		$buscar = $this->input->post('buscarusuario');
+	    		/*$buscar = $this->input->post('buscarusuario');
 		    	$config['base_url'] = base_url().'usuarios/buscarusuario';
 			    $config['div'] = '#busqueda';
 			    $config['additional_param'] = "{'buscarusuario' : '$buscar'}";
@@ -801,16 +812,15 @@ class Usuarios extends MX_Controller {
 				$config['cur_tag_open'] = '<li class="active"><a href="">';
 				$config['cur_tag_close'] = '</a></li>';
 				$config['num_tag_open'] = '<li class="page">';
-				$config['num_tag_close'] = '</li>';
+				$config['num_tag_close'] = '</li>';*/
 
-				 $this->jquery_pagination->initialize($config);
+				 //$this->jquery_pagination->initialize($config);
 					
-			     $filas = $this->global_model->total_posts_paginados($this->input->post('buscarusuario'),$config['per_page'],$offset);
-			     $paginacion = $this->jquery_pagination->create_links();    
+			     $filas = $this->global_model->total_posts_paginados($this->input->post('buscarusuario'));
+			    // $paginacion = $this->jquery_pagination->create_links();
 
 			      $data = array(
-					'filas' => $filas,
-					'paginacion' => $paginacion
+					'filas' => $filas
 			     );
 				$this->load->view('mostrarbusqueda',$data);	
 	    	}

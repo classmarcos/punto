@@ -23,11 +23,13 @@ $buscarusuario = array(
                                <div class="form-group">
                                   <label class="control-label inputs">Busqueda Avanzada de Clientes</label>
                                    <div class="input-group">
-                                      <span class="input-group-addon">
-                                          <i class="fa fa-search-plus"></i>
-                                      </span>
+
                                       <?php echo form_input($buscarusuario); ?>
-                                    </div>
+
+                                       <span class="input-group-addon">
+                                           <button id="btn_buscar" class="btn btn-success" type="button">Buscar</button>
+                                      </span>
+                                   </div>
                                </div> 
                            </div>   
                         </div>
@@ -43,10 +45,10 @@ $buscarusuario = array(
   <script type="text/javascript">
       $(document).ready(function()
       {
-         $("#buscarusuario").on('keyup',function(event)
+         $("#btn_buscar").on('click',function(event)
          {
             event.preventDefault();
-            busqueda('buscarusuario='+$('#buscarusuario').val(),'<?php echo base_url(); ?>usuarios/buscarusuario','#busqueda');
+            busqueda('buscarusuario='+$('#buscarusuario').val()+ "%",'<?php echo base_url(); ?>usuarios/buscarusuario','#busqueda');
         });
       });
 </script>

@@ -773,18 +773,9 @@ class Global_model extends CI_Model {
         return $consulta->row()->montos;
     }
 
+
+
     /*function filas_paginada($abuscar) {
-
-        $this->db->like('usuario', $abuscar, 'both');
-        $this->db->or_like('correo', $abuscar, 'after');
-        $this->db->or_like('nombre', $abuscar, 'after');
-        $this->db->or_like('apellido', $abuscar, 'before');
-
-        $consulta = $this->db->get('usuarios');
-        return $consulta->num_rows();
-    }*/
-
-    /*function filas_paginada1($abuscar) {
 
         $this->db->like('nombre', $abuscar, 'both');
         $this->db->or_like('apellidos', $abuscar, 'after');
@@ -797,12 +788,12 @@ class Global_model extends CI_Model {
 
 
 
-    function filas_paginada1($abuscar) {
+    function filas_paginada($stringContrato) {
 
-        $stringContrato = 'A0000101A';
+        //$stringContrato = 'A0000101A';
         $stringImei = '170';
 
-        $query = "CALL spandroidbcontratos( ? , ? )";
+        $query = "CALL spandroidbcontratos( ? , ? );";
 
         $consulta = $this->db->query($query, array($stringContrato,$stringImei));
 
@@ -825,29 +816,42 @@ class Global_model extends CI_Model {
 
 
 
-    function total_posts_paginados1($abuscar, $por_pagina, $segmento)
+    function total_posts_paginados($stringContrato)
     {
 
-        $this->db->like('nombre', $abuscar, 'both');
-        $this->db->or_like('apellidos', $abuscar, 'after');
-        $this->db->or_like('cedula', $abuscar, 'after');
-        $this->db->or_like('direccion', $abuscar, 'before');
+        //$stringContrato = 'A0000101A';
+        $stringImei = '170';
 
-        $consulta = $this->db->get('clientes', $por_pagina, $segmento);
+        $query = "CALL spandroidbcontratos( ? , ? )";
 
-        if($consulta->num_rows() > 0)
+        $consulta = $this->db->query($query, array($stringContrato,$stringImei));
+
+
+
+        $row = new stdClass();
+        $row->result = $consulta->result();
+        $row->num_rows = $consulta->num_rows();
+
+        $consulta->next_result(); //la libreria fue modificada para tener este parametro dentro de mysqli_result
+        $consulta->free_result();
+
+
+
+        if($row->num_rows > 0)
         {
-            return $consulta->result();
+            return $row->result;
         }
         else
         {
             $datos["error"] = TRUE;
         }
         return $datos;
+
+
     }
 
 
-    function total_posts_paginados($abuscar, $por_pagina, $segmento)
+    /*function total_posts_paginados($abuscar, $por_pagina, $segmento)
     {
 
         $this->db->like('usuario', $abuscar, 'both');
@@ -866,6 +870,6 @@ class Global_model extends CI_Model {
             $datos["error"] = TRUE;
         }
         return $datos;
-    }
+    }*/
 
 }

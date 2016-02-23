@@ -175,6 +175,8 @@ function filtros(id, url, div)
 
 function busqueda(id, url, div)
 {
+
+
     $.ajax({
         type: 'POST',
         url: url,
@@ -189,6 +191,8 @@ function busqueda(id, url, div)
         }
     }); 
 }
+
+
 
 function grupos(id, div, url, defaultt)
 {
