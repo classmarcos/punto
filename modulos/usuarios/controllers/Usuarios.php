@@ -837,8 +837,7 @@ class Usuarios extends MX_Controller {
         {
 	    	
     	 $filas = $this->global_model->total_posts_paginados($this->input->post('Contrato'));
-			    // $paginacion = $this->jquery_pagination->create_links();
-
+			   
 			      $data = array(
 					'filas' => $filas
 			     );
