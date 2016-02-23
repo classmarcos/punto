@@ -773,7 +773,7 @@ class Global_model extends CI_Model {
         return $consulta->row()->montos;
     }
 
-    function filas_paginada($abuscar) {
+    /*function filas_paginada($abuscar) {
 
         $this->db->like('usuario', $abuscar, 'both');
         $this->db->or_like('correo', $abuscar, 'after');
@@ -782,9 +782,9 @@ class Global_model extends CI_Model {
 
         $consulta = $this->db->get('usuarios');
         return $consulta->num_rows();
-    }
+    }*/
 
-    function filas_paginada1($abuscar) {
+    /*function filas_paginada1($abuscar) {
 
         $this->db->like('nombre', $abuscar, 'both');
         $this->db->or_like('apellidos', $abuscar, 'after');
@@ -793,7 +793,37 @@ class Global_model extends CI_Model {
 
         $consulta = $this->db->get('clientes');
         return $consulta->num_rows();
+    }*/
+
+
+
+    function filas_paginada1($abuscar) {
+
+        $stringContrato = 'A0000101A';
+        $stringImei = '170';
+
+        $query = "CALL spandroidbcontratos( ? , ? )";
+
+        $consulta = $this->db->query($query, array($stringContrato,$stringImei));
+
+
+
+        $row = new stdClass();
+        $row->result = $consulta->result();
+        $row->num_rows = $consulta->num_rows();
+
+        $consulta->next_result(); //la libreria fue modificada para tener este parametro dentro de mysqli_result
+        $consulta->free_result();
+
+
+
+
+        return  $row->num_rows;
+
     }
+
+
+
 
     function total_posts_paginados1($abuscar, $por_pagina, $segmento)
     {

@@ -12,32 +12,34 @@
       <table class="table table-user-information">
     <thead> 
     <tr>
-        <th width="2%">ID</th>
-        <th width="10%">NOMBRE</th>
-        <th width="10%">APELLIDOS</th>
-        <th width="10%">CEDULA</th>
-        <th width="10%">DIRECCION</th>
-        <th width="10%">ESTATUS</th>
-         <th width="10%">Pendientes</th>
+        <th width="10%">Contrato</th>
+        <th width="10%">Nombres</th>
+        <th width="10%">Cedula</th>
+        <th width="10%">Direccion</th>
+        <th width="10%">Balance</th>
+        <th width="10%">Estatus</th>
+         <th width="10%">Codigo Estatus</th>
+        <th width="10%">Balance Caja</th>
+        <th width="10%">AC</th>
         <td width="10%" align="center"><span class="glyphicon glyphicon-cog"></span></td>
     </tr>
     </thead> 
     <?php foreach($filas as $r):?>
     <tbody> 
     <tr>
-        <td><?= $r->id?></td>
-        <td><?= $r->nombre?></td>
-        <td><?= $r->apellidos?></td>
-        <td><?= $r->cedula?></td>
-        <td><?= $r->direccion?></td>
-        <td><?= $r->estatus?> </td>
-        <td>
+        <td><?= $r->Contrato?></td>
+        <td><?= $r->Nombre?></td>
+        <td><?= $r->Cedula?></td>
+        <td><?= $r->Direccion?></td>
+        <td><?= $r->Balance?></td>
+        <td><?= $r->Estatus?> </td>
+        <td><?= $r->CodigoEstatus?> </td>
+        <td><?= $r->BalanceCaja?> </td>
+        <td><?= $r->AC?> </td>
 
-         <a href="javascript:void(0)" onclick="modal('idCliente=<?php echo $r->id ?>','<?php echo base_url(); ?>clientes/detallesPedientes','.modal-body','.modal','')"><span class="badge bg-theme"><?php echo $this->global_model->metodoanteguo('deudas','cuente','idCliente',$r->id);?></span></a>
- 
-        </td>
+
          <td align="center">
-           <a href="javascript:void(0)" class="btn btn-info btn-xs" title="Pagar" class="text-info" onclick="modal('idCliente=<?php echo $r->id; ?>','<?= base_url().'clientes/pagar'?>','.modal-body','.modal','')">Pagar</a>
+           <a href="javascript:void(0)" class="btn btn-info btn-xs" title="Pagar" class="text-info" onclick="modal('Contrato=<?php echo $r->Contrato; ?>','<?= base_url().'clientes/pagar'?>','.modal-body','.modal','')">Pagar</a>
         </td>
     </tr>
     </tbody> 

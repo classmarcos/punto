@@ -47,16 +47,9 @@ class Clientes extends MX_Controller{
 		//$this->load->view('usuario_editar');
 	}
 
-	function formulariobusquedacliente()
+	function hola()
     {
-    	if($this->input->is_ajax_request())
-        {
-    		$this->load->view('buscarcliente');
-    	}
-    	else
-    	{
-    		show_404();
-    	}	
+    	var_dump($this->global_model->filas_paginada1($this->input->post('buscarcliente')));
     }
 
      function buscarcliente($offset=0)
@@ -106,7 +99,7 @@ class Clientes extends MX_Controller{
 					'filas' => $filas,
 					'paginacion' => $paginacion
 			     );
-				$this->load->view('mostrarbusqueda',$data);	
+				$this->load->view('mostrarbusqueda',$data);
 	    	}
 	    }
 	    else
