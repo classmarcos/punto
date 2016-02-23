@@ -26,7 +26,7 @@ $buscarusuario = array(
 
                                       <?php echo form_input($buscarusuario); ?>
 
-                                       <span class="input-group-addon">
+                                       <span class="input-group-btn">
                                            <button id="btn_buscar" class="btn btn-success" type="button">Buscar</button>
                                       </span>
                                    </div>

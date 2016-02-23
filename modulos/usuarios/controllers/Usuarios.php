@@ -831,6 +831,25 @@ class Usuarios extends MX_Controller {
 	    }	
     }
 
+    public function pagar(){
+
+    	if($this->input->is_ajax_request())
+        {
+	    	
+    	 $filas = $this->global_model->total_posts_paginados($this->input->post('Contrato'));
+			    // $paginacion = $this->jquery_pagination->create_links();
+
+			      $data = array(
+					'filas' => $filas
+			     );
+				$this->load->view('clientes/pagar_deudas',$data);
+		 }
+	    else
+	    {
+	    	show_404();
+	    }	
+    }
+
 	public function estadistica()
 	{
         $grafico1 = "[";

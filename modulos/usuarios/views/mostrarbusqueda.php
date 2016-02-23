@@ -42,23 +42,9 @@
             <ul class="tooltip-gestion list-inline">
                 <li>
                     <a href="javascript:void(0)" class="btn btn-info btn-xs" title="Editar Usuario" class="text-info"
-                       onclick="modal('Contrato=<?= $r->Contrato?>','<?= base_url().'usuarios/editar_usuario'?>','.modal-body','.modal','')">Editar </a>
+                       onclick="modal('Contrato=<?= $r->Contrato?>','<?= base_url().'usuarios/pagar'?>','.modal-body','.modal','')">Pagar </a>
                 </li>
 
-                <li><a href="javascript:void(0)" class="btn btn-danger btn-xs" title="Borrar Usuario" class="text-danger" onclick="borrar('#resultado','<?php echo base_url();?>usuarios/borrarusuario','id=<?php echo $r->Contrato; ?>','<?php echo base_url(); ?>usuarios/mostrar')">Eliminar</a></li>
-
-                <?php if ($r->AC == -1)
-                {
-                    ?>
-                    <li><a href="javascript:void(0)" class="btn btn-warning btn-xs" title="Inabilitar Usuario" class="text-danger" onclick="filtros('inhabilitar=<?php echo $r->Contrato;?>','<?php echo base_url()?>usuarios/habiliatinabilitarusuario','#resultado')">Inhabilitar</a></li>
-                    <?php
-                }
-                else
-                {?>
-                    <li><a href="javascript:void(0)" class="btn btn-default btn-xs" title="Habilitar Usuario" class="text-danger" onclick="filtros('habilitar=<?php echo $r->Contrato;?>','<?php echo base_url()?>usuarios/habiliatinabilitarusuario','#resultado')">Habilitar</a></li>
-                    <?php
-                }?>
-            </ul>
         </td>
 
     </tr>
