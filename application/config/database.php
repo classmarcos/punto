@@ -28,10 +28,10 @@ $db['default']['save_queries'] = TRUE;
 
 // Nuestra sefunda base de datos y principal:
 $db['prueba']['dns'] = '';
-$db['prueba']['hostname'] = '192.168.10.68';
-$db['prueba']['username'] = 'android';
-$db['prueba']['password'] = 'password';
-$db['prueba']['database'] = 'Telenordprueba';
+$db['prueba']['hostname'] = '';
+$db['prueba']['username'] = '';
+$db['prueba']['password'] = '';
+$db['prueba']['database'] = '';
 $db['prueba']['dbdriver'] = 'mysqli';
 $db['prueba']['dbprefix'] = '';
 $db['prueba']['pconnect'] = FALSE; # Recomendado para poder trabajar con ambas conexiones en paralelo
