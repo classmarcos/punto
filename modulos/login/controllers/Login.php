@@ -33,14 +33,14 @@ class Login extends MX_Controller {
 
 	function index()
 	{
-		/*$data['titulo']  = 'Iniciar Sección';
+		$data['titulo']  = 'Iniciar Sección';
 		$data['contenido'] = 'login';
-		$this->load->view('plantilla_admin',$data);*/
+		$this->load->view('plantilla_admin',$data);
 
-		$stringCriterio = "g0551001a%";
-		$stringImei = "170";
+		/*$stringCriterio = "g0551001a%";
+		$stringImei = "170";*/
 
-		var_dump($resultado = $this->global_model->consultacliente($stringCriterio,$stringImei));
+		//var_dump($resultado = $this->global_model->consultacliente($stringCriterio,$stringImei));
 
 		//var_dump($respuesta = $this->mi_session->entrar($usuario, $clave));
 

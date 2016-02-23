@@ -75,10 +75,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => '',
-	'username' => '',
-	'password' => '',
-	'database' => '',
+	'hostname' => 'localhost',
+	'username' => 'root',
+	'password' => 'password',
+	'database' => 'caja_chica',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
@@ -106,10 +106,10 @@ $active_record = TRUE;
 
 // Nuestra primera base de datos y principal:
 $db['default']['dns'] = '';
-$db['default']['hostname'] = '';
-$db['default']['username'] = '';
-$db['default']['password'] = '';
-$db['default']['database'] = '';
+$db['default']['hostname'] = 'localhost';
+$db['default']['username'] = 'root';
+$db['default']['password'] = 'password';
+$db['default']['database'] = 'caja_chica';
 $db['default']['dbdriver'] = 'mysqli';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = FALSE; # Recomendado para poder trabajar con ambas conexiones en paralelo
@@ -127,10 +127,10 @@ $db['default']['save_queries'] = TRUE;
 
 // Nuestra sefunda base de datos y principal:
 $db['prueba']['dns'] = '';
-$db['prueba']['hostname'] = '';
-$db['prueba']['username'] = '';
-$db['prueba']['password'] = '';
-$db['prueba']['database'] = '';
+$db['prueba']['hostname'] = '192.168.10.68';
+$db['prueba']['username'] = 'android';
+$db['prueba']['password'] = 'password';
+$db['prueba']['database'] = 'Telenordprueba';
 $db['prueba']['dbdriver'] = 'mysqli';
 $db['prueba']['dbprefix'] = '';
 $db['prueba']['pconnect'] = FALSE; # Recomendado para poder trabajar con ambas conexiones en paralelo
