@@ -1,11 +1,20 @@
+<?php 
+  if(isset($filas["error"]))
+  {
+      echo "Actualmente no hay Registros";
+  }//V0400201A
+  else
+  {
+  ?>
 
+  
 
 <!-- COMPLEX TO DO LIST --> 
 <ol class="breadcrumb">
-                          <li class="active">Detalle Cliente <span class="badge bg-theme"><?=$Contrato?></span> </li>
+                          <li class="active">Detalle Cliente </span> </li>
                           <li class="active">Total Mensualidad <i class="fa fa-money"></i> <span class="badge bg-theme">RD$<?php //echo APERTURACAJA ?></span></li>
                           <li class="active">Total Caja <i class="fa fa-money"></i> <span class="badge bg-theme">RD$<?php //echo CAJACHICA ?></span></li>
-                          <li class="active">Balance Total <i class="fa fa-money"></i> <span class="badge bg-theme">RD$ <?= $Balance ?></span></li>
+                          <li class="active">Balance Total <i class="fa fa-money"></i> <span class="badge bg-theme">RD$ <?=$Balance?></span></li>
                           
                            </ol>    
               <div class="row mt">
@@ -53,21 +62,24 @@
                                                 
                                             </tr>
                                             </thead>  
+                                            <?php foreach($filas as $r):?>
                                             <tbody> 
                                             <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
+
+                                                <td> <?=$r->Numero?>   </td>
+                                                <td> <?=$r->Concepto?> </td>
+                                                <td> <?=$r->Monto?>     </td>
+                                                <td> <?=$r->Pagado?>    </td>
+                                                <td> <?=$r->Fecha?>     </td>
+                                                <td> <?=$r->Balance?>   </td>
                                              
                                                    
                                                    
                                               </tr>
+
                                             </tbody>
                                             
-                                            
+                                             <?php endforeach;?>
                                            </table>
 
                                        
@@ -117,6 +129,9 @@
                           </div>
                       </section>
                   </div><!-- /col-md-12-->
-                 
+                   
+ <?php    
+  }
+  ?>
               </div><!-- /row -->
 

@@ -91,30 +91,32 @@ class Clientes extends MX_Controller{
     }
 
     function mostrarDetalle(){
-    	$filas = $this->input->post('fila');
-    	 $myArray = explode(';', $filas);
+    	if($this->input->is_ajax_request())
+        {
+	    	$arreglo = $this->input->post('fila');
+	    	 $myArray = explode(';', $arreglo);
 
-    	 $Contrato = $myArray[0];
-    	 $Balance = $myArray[1];
-    	
-	     $data = array(
-	      	'Contrato' => $Contrato,
-			'Balance' => $Balance
-	     );
+	    	 $Contrato = $myArray[0];
+	    	 $Balance = $myArray[1];
 
-		$this->load->view('detallescliente',$data);
-		
+		     $filas = $this->global_model->detallecliente($Contrato,'mensualidad');
+			     
+			      $data = array(
+					'filas' => $filas,
+					'Balance' =>$Balance,
+					
+			     );
+				
+
+			$this->load->view('detallescliente',$data);
+		}
+		else
+	    {
+	    	show_404();
+	    }	
 	}
 
-	function accionElegidaDetalle($contrato,$opcion){
-		$filas = $this->global_model->detallecliente($contrato,$opcion);
 
-		$data(array(
-			'filas' =>  $filas,
-		 ));
-			
-
-	}
 
 
 
