@@ -819,16 +819,12 @@ class Global_model extends CI_Model {
     function detallecliente($stringCriterio, $opcion){
 
 
-
-        define("CONSULTA_MENSUALIDAD", "mensualidad");
-        define("CONSULTA_CAJA", "caja");
-
         $query = "";
 
-        if ($opcion == CONSULTA_MENSUALIDAD) {
+        if ($opcion == "mensualidad") {
             //var_dump("hola");
             $query = "CALL spandroidbbalances( ?, 'fc')";
-        } elseif ($opcion == CONSULTA_CAJA) {
+        } elseif ($opcion == "caja") {
             $query = "CALL spandroidbbalances( ?, 'sb')";
         } else {
             return "opcion invalida";
