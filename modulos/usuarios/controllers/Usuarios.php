@@ -769,9 +769,10 @@ class Usuarios extends MX_Controller {
 
 	function hola()
 	{
-		var_dump($this->global_model->filas_paginada($this->input->post('buscarusuario')));
+		var_dump($this->session->userdata('id_usuario'));
+		var_dump($this->global_model->detallecliente('V0400201A','caja'));
 
-		var_dump($this->global_model->total_posts_paginados($this->input->post('buscarusuario')));
+		//var_dump($this->global_model->total_posts_paginados($this->input->post('buscarusuario'),$this->session->userdata('id_usuario')));
 	}
 
 
@@ -816,7 +817,7 @@ class Usuarios extends MX_Controller {
 
 				 //$this->jquery_pagination->initialize($config);
 					
-			     $filas = $this->global_model->total_posts_paginados($this->input->post('buscarusuario'));
+			     $filas = $this->global_model->total_posts_paginados($this->input->post('buscarusuario'),$this->session->userdata('id_usuario'));
 			    // $paginacion = $this->jquery_pagination->create_links();
 
 			      $data = array(

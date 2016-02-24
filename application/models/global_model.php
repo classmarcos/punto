@@ -816,11 +816,58 @@ class Global_model extends CI_Model {
 
 
 
-    function total_posts_paginados($stringContrato)
+    function detallecliente($stringCriterio, $opcion){
+
+
+
+        define("CONSULTA_MENSUALIDAD", "mensualidad");
+        define("CONSULTA_CAJA", "caja");
+
+        $query = "";
+
+        if ($opcion == CONSULTA_MENSUALIDAD) {
+            var_dump("hola");
+            $query = "CALL spandroidbbalances( ?, 'fc')";
+        } elseif ($opcion == CONSULTA_CAJA) {
+            $query = "CALL spandroidbbalances( ?, 'sb')";
+        } else {
+            return "opcion invalida";
+        }
+
+        $consulta = $this->db->query($query, array($stringCriterio));
+
+        $row = new stdClass();
+        $row->result = $consulta->result();
+        $row->num_rows = $consulta->num_rows();
+
+        $consulta->next_result(); //la libreria fue modificada para tener este parametro dentro de mysqli_result
+        $consulta->free_result();
+
+
+
+        if($row->num_rows > 0)
+        {
+            return $row->result;
+        }
+        else
+        {
+            $datos["error"] = TRUE;
+        }
+        return $datos;
+
+
+
+    }
+
+
+
+
+
+    function total_posts_paginados($stringContrato,$stringImei)
     {
 
         //$stringContrato = 'A0000101A';
-        $stringImei = '170';
+        //$stringImei = '170';
 
         $query = "CALL spandroidbcontratos( ? , ? )";
 
