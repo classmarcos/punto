@@ -1,11 +1,11 @@
 <?php 
-foreach ($filas as $r):
+
 
 
 $nombre = array(
               'name'        => 'Nombre',
               'id'          => 'Nombre',
-              'value'       => $r->Nombre,
+              'value'       => $Nombre,
               'type'        => 'text',
               'placeholder' => 'Nombre',
               'class'       => 'form-control ',
@@ -17,7 +17,7 @@ $nombre = array(
 $cedula = array(
               'name'        => 'Cedula',
               'id'          => 'Cedula',
-              'value'       => $r->Cedula,
+              'value'       => $Cedula,
               'placeholder' => 'C&eacute;dula',
               'type'        => 'text',
               'class'       => 'form-control',
@@ -28,7 +28,7 @@ $cedula = array(
 $direccion = array(
               'name'        => 'Direccion',
               'id'          => 'Direccion',
-              'value'       => $r->Direccion,
+              'value'       => $Direccion,
               'placeholder' => 'Direcci&oacute;n',
               'type'        => 'text',
               'class'       => 'form-control',
@@ -39,7 +39,7 @@ $direccion = array(
 $contrato = array(
               'name'        => 'Contrato',
               'id'          => 'Contrato',
-              'value'       => $r->Contrato,
+              'value'       => $Contrato,
               'placeholder' => 'Contrato',
               'type'        => 'text',
               'class'       => 'form-control',
@@ -48,11 +48,11 @@ $contrato = array(
              
               );
 
-if($r->Estatus == 'DESCONECTADO'){
+if($Estatus == 'DESCONECTADO'){
   $estatus = array(
               'name'        => 'Estatus',
               'id'          => 'Estatus',
-              'value'       =>  $r->Estatus,
+              'value'       =>  $Estatus,
               'placeholder' => 'Estatus',
               'type'        => 'text',
               'class'       => 'form-control ',
@@ -66,7 +66,7 @@ if($r->Estatus == 'DESCONECTADO'){
 $estatus = array(
               'name'        => 'Estatus',
               'id'          => 'Estatus',
-              'value'       => $r->Estatus,
+              'value'       => $Estatus,
               'placeholder' => 'Estatus',
               'type'        => 'text',
               'class'       => 'form-control',
@@ -91,7 +91,7 @@ $montoapagar = array(
   $balancetotal = array(
                                   'name'        => 'Balance',
                                   'id'          => 'Balance',
-                                  'value'       => $r->Balance,
+                                  'value'       =>'',// $r->Balance,
                                   'type'        => 'text',
                                   'placeholder' => 'Balance Total',
                                   'class'       => 'form-control',
@@ -162,7 +162,7 @@ $montoapagar = array(
               </div>
          </div>  
 
-          <input type="hidden" name="Contrato" value="<?php echo $r->Contrato?>">
+          <input type="hidden" name="Contrato" value="<?php echo $Contrato?>">
 
                  
 
@@ -240,7 +240,7 @@ $montoapagar = array(
               </div>
          </div>
 
-				 <input type="hidden" name="Contrato" value="<?php echo $r->Contrato?>">
+				 <input type="hidden" name="Contrato" value="<?php echo $Contrato?>">
 
          		       
       </div>
@@ -257,7 +257,7 @@ $montoapagar = array(
   
     <?php echo form_close(); ?>
 
-<?php endforeach; ?>
+
 
 	<script type="text/javascript">
 			$(document).ready(function()

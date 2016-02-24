@@ -63,9 +63,21 @@ class Clientes extends MX_Controller{
     	if($this->input->is_ajax_request())
         {
 	    	
-    	 $filas = $this->global_model->total_posts_paginados($this->input->post('Contrato'));
+    	 $filas = $this->input->post('fila');
+    	 $myArray = explode(';', $filas);
+    	 
+    	 $Contrato = $myArray[0];
+    	 $Nombre = $myArray[1];
+    	 $Cedula = $myArray[2];
+    	 $Estatus = $myArray[3];
+    	 $Direccion = $myArray[4];
+    	
 			      $data = array(
-			      	'filas' => $filas,
+			      	'Contrato' => $Contrato,
+		      		'Nombre' => $Nombre,
+	      			'Cedula' => $Cedula,
+      				'Estatus' => $Estatus,
+      				'Direccion' => $Direccion
 			     );
 				$this->load->view('clientes/pagar_deudas',$data);
 		 }
