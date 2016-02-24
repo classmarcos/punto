@@ -25,27 +25,21 @@
                                                 <th>BALANCE</th>
                                                 
                                             </tr>
-                                            </thead> 
-                                            <?php $acumulador=0;?>
-                                            <?php foreach($filas as $r):?>
-                                              
+                                            </thead>  
                                             <tbody> 
                                             <tr>
-                                                <td><?=$r->id?></td>
-                                                <td><?= $r->concepto?></td>
-                                                <td><?= $r->monto?></td>
-                                                <td><?= $r->pagado?></td>
-                                                <td><?= $r->fecha?></td>
-                                                <td><?= $resultado = empty($r->balance)?$r->monto:$r->balance;
-                                                    $acumulador = $acumulador+ $resultado;
-                                                ?></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
                                              
                                                    
                                                    
                                               </tr>
                                             </tbody>
-                                             
-                                            <?php endforeach;?>  
+                                            
                                             
                                            </table>
 
@@ -54,7 +48,7 @@
                                                   $balancetotal = array(
                                                                 'name'        => 'balancetotal',
                                                                 'id'          => 'balancetotal',
-                                                                'value'       =>  $acumulador.'.00',
+                                                                'value'       =>  '.00',
                                                                 'type'        => 'text',
                                                                 'placeholder' => '0.00',
                                                                 'class'       => 'form-control',

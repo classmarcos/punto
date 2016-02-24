@@ -89,10 +89,10 @@ class Clientes extends MX_Controller{
 	    }	
     }
 
-    /*function mostrarDetalle(){
+    function mostrarDetalle(){
 		$this->load->view('detallescliente');
 		
-	}*/
+	}
 
     /*function mostrarcliente()
 	{
