@@ -1,8 +1,16 @@
 
 
-<!-- COMPLEX TO DO LIST -->     
+<!-- COMPLEX TO DO LIST --> 
+<ol class="breadcrumb">
+                          <li class="active">Detalle Cliente</li>
+                          <li class="active">/Total Mensualidad <i class="fa fa-money"></i> <span class="badge bg-theme">RD$<?php //echo APERTURACAJA ?></span></li>
+                          <li class="active">/Total Caja <i class="fa fa-money"></i> <span class="badge bg-theme">RD$<?php //echo CAJACHICA ?></span></li>
+                          <li class="active">/Balance Total <i class="fa fa-money"></i> <span class="badge bg-theme">RD$ <?= $Balance ?></span></li>
+                          
+                           </ol>    
               <div class="row mt">
                   <div class="col-md-12">
+
                       <section class="task-panel tasks-widget">
                     <div class="panel-heading">
                           <div class="pull-left"><h5><i class="fa  fa-table"></i> Detalle de Pendientes</h5></div>
@@ -12,6 +20,25 @@
                               <div class="task-content">
 
                                   <ul class="task-list">
+
+                                  <li>
+                                    <div class="col-md-5 col-md-offset-1">
+                                       <div class="form-group">
+                                          <label class="control-label inputs">Acci&oacute;n</label>
+                                           <div class="input-group">
+                                             <span class="input-group-addon">
+                                              <i class="fa fa-list-alt"></i>
+                                            </span>
+                                             <select name="id_operador" class="form-control">
+
+                                                 <option value="fc" >Pago Mensualidad</option>
+                                                 <option value="sb">Caja Digital</option>
+
+                                             </select>
+                                            </div>
+                                       </div>  
+                                     </div>
+                                  </li>
                                       <li>
                                           
                                         <table class="table table-bordered">
@@ -43,36 +70,13 @@
                                             
                                            </table>
 
-                                          <?php 
-
-                                                  $balancetotal = array(
-                                                                'name'        => 'balancetotal',
-                                                                'id'          => 'balancetotal',
-                                                                'value'       =>  '.00',
-                                                                'type'        => 'text',
-                                                                'placeholder' => '0.00',
-                                                                'class'       => 'form-control',
-                                                                'required'    => '""',
-                                                                'readonly'    => 'true'
-                                                                );
-                                                  ?>
+                                       
                                               
 
 
                                       </li>
 
-                                          <li>
-                                             <div class="col-md-5 col-md-offset-1">
-                                        <div class="form-group" >
-                                                  <label class="control-label inputs"><strong>Total Balance</strong> </label>
-                                                   <div class="input-group" >
-                                                     <span class="input-group-addon">
-                                                     RD<i class="fa fa-usd"></i>
-                                                    </span>
-                                                   <?php echo form_input($balancetotal); ?>
-                                                    </div>
-                                               </div> 
-</div>
+                                          </div>
                                           </li>
 
 
@@ -113,4 +117,6 @@
                           </div>
                       </section>
                   </div><!-- /col-md-12-->
+                 
               </div><!-- /row -->
+

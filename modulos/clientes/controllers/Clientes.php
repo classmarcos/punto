@@ -81,7 +81,7 @@ class Clientes extends MX_Controller{
 				'Direccion' => $Direccion,
 				'Balance' => $Balance
 		     );
-			 $this->load->view('clientes/pagar_deudas',$data);
+			 $this->load->view('pagar_deudas',$data);
 		 }
 	    else
 	    {
@@ -90,7 +90,18 @@ class Clientes extends MX_Controller{
     }
 
     function mostrarDetalle(){
-		$this->load->view('detallescliente');
+    	$filas = $this->input->post('fila');
+    	 $myArray = explode(';', $filas);
+
+    	 $Contrato = $myArray[0];
+    	 $Balance = $myArray[1];
+    	
+	     $data = array(
+	      	'Contrato' => $Contrato,
+			'Balance' => $Balance
+	     );
+
+		$this->load->view('detallescliente',$data);
 		
 	}
 

@@ -32,8 +32,7 @@
         <td><?= $r->Cedula?></td>
         <td><?= $r->Direccion?></td>
         <td> 
-            <!-- <?= $r->Balance?> -->
-           <a href="javascript:void(0)" onclick="modal('Contrato=<?php echo $r->Contrato ?>','<?php echo base_url(); ?>clientes/mostrarDetalle','.modal-body','.modal','')"><span class="badge bg-theme"><?=$r->Balance //echo $this->global_model->metodoanteguo('caja_chica','cuente','','id_grupo',$r->id_grupo);?></span></a>
+           <a href="javascript:void(0)" onclick="modal('fila=<?php echo $r->Contrato.';'.$r->Balance ?>','<?php echo base_url(); ?>clientes/mostrarDetalle','.modal-body','.modal','')"><span class="badge bg-theme"><?=$r->Balance //echo $this->global_model->metodoanteguo('caja_chica','cuente','','id_grupo',$r->id_grupo);?></span></a>
         </td>
         <td><?= $r->Estatus?> </td>
         <td><?= $r->CodigoEstatus?> </td>
