@@ -61,7 +61,7 @@
                                 <div class="col-sm-6 col-xs-6"></div>
                             </div>
                             <div class="centered">
-                                <a href="javascript:void(0)" class="btn btn-default btn-xs" onclick="mostrar('','<?php echo base_url(); ?>usuarios/formulariobusquedausuario','#resultado')"><img src="assets/img/monei.png" width="120"></a>
+                                <a href="javascript:void(0)" class="btn btn-default btn-xs" onclick="mostrar('','<?php echo base_url(); ?>clientes/formulariobusquedacliente','#resultado')"><img src="assets/img/monei.png" width="120"></a>
                             </div>
                         </div>
                     </div><!-- /col-md-4 -->

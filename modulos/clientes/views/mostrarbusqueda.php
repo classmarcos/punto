@@ -9,7 +9,7 @@
 
 <div class="col-md-8 col-lg-12">
     <div class="form-panel">
-      <table class="table table-user-information">
+      <table id="tabla" class="table table-user-information">
     <thead> 
     <tr>
         <th width="10%">Contrato</th>
@@ -18,7 +18,7 @@
         <th width="10%">Direccion</th>
         <th width="10%">Balance</th>
         <th width="10%">Estatus</th>
-         <th width="10%">Codigo Estatus</th>
+        <th width="10%">Codigo Estatus</th>
         <th width="10%">Balance Caja</th>
         <th width="10%">AC</th>
         <td width="10%" align="center"><span class="glyphicon glyphicon-cog"></span></td>
@@ -38,16 +38,22 @@
         <td><?= $r->AC?> </td>
 
 
-         <td align="center">
-           <a href="javascript:void(0)" class="btn btn-info btn-xs" title="Pagar" class="text-info" onclick="modal('Contrato=<?php echo $r->Contrato; ?>','<?= base_url().'clientes/pagar'?>','.modal-body','.modal','')">Pagar</a>
+        <td align="center">
+            <ul class="tooltip-gestion list-inline">
+                <li>
+                    <a href="javascript:void(0)" class="btn btn-info btn-xs" title="Pagar" class="text-info"
+                       onclick="modal('Contrato=<?= $r->Contrato?>','<?= base_url().'clientes/pagar'?>','.modal-body','.modal','')">Pagar </a>
+                </li>
+
         </td>
+
     </tr>
     </tbody> 
     <?php endforeach;?>  
 </table> 
 </div>
 
-  <?php echo $paginacion ?>
+
   
  <?php    
   }

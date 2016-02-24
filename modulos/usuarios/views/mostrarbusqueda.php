@@ -9,7 +9,7 @@
 
 <div class="col-md-8 col-lg-12">
     <div class="form-panel">
-      <table class="table table-user-information">
+      <table id="tabla" class="table table-user-information">
     <thead> 
     <tr>
         <th width="10%">Contrato</th>

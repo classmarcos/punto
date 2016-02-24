@@ -23,11 +23,13 @@ $buscarcliente = array(
                                <div class="form-group">
                                   <label class="control-label inputs">Busqueda Avanzada de Clientes</label>
                                    <div class="input-group">
-                                      <span class="input-group-addon">
-                                          <i class="fa fa-search-plus"></i>
-                                      </span>
+
                                       <?php echo form_input($buscarcliente); ?>
-                                    </div>
+
+                                       <span class="input-group-btn">
+                                           <button id="btn_buscar" class="btn btn-success" type="button">Buscar</button>
+                                      </span>
+                                   </div>
                                </div> 
                            </div>   
                         </div>
@@ -43,10 +45,10 @@ $buscarcliente = array(
   <script type="text/javascript">
       $(document).ready(function()
       {
-         $("#buscarcliente").on('keyup',function(event)
+         $("#btn_buscar").on('click',function(event)
          {
             event.preventDefault();
-            busqueda('buscarcliente='+$('#buscarcliente').val(),'<?php echo base_url(); ?>clientes/buscarcliente','#busqueda');
+            busqueda('buscarcliente='+$('#buscarcliente').val()+ "%",'<?php echo base_url(); ?>clientes/buscarcliente','#busqueda');
         });
       });
 </script>

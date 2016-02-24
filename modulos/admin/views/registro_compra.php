@@ -130,7 +130,7 @@ $totalpagar = array(
                                     </select>
                                 </div>
                                 <div id="sinfactura" style="display:none;">
-                                    <small>El monto consumible sin factura es <i class="fa fa-money"></i> <?php echo MONTOCONSUMIBLE ?></small>
+                                    <small>El monto consumible sin factura es <i class="fa fa-money"></i> <?php //echo MONTOCONSUMIBLE ?></small>
                                 </div>
                             </div>
 

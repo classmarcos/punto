@@ -837,9 +837,14 @@ class Usuarios extends MX_Controller {
         {
 	    	
     	 $filas = $this->global_model->total_posts_paginados($this->input->post('Contrato'));
-			   
+
+        	//$Contrato = $this->input->post('Contrato');
+        	//$Nombre = $this->input->post('Nombre');
+			  // var_dump($Nombre);
 			      $data = array(
-					'filas' => $filas
+			      	'filas' => $filas,
+					//'Contrato' => $Contrato,
+					//'Nombre'  =>$Nombre
 			     );
 				$this->load->view('clientes/pagar_deudas',$data);
 		 }
