@@ -13,9 +13,9 @@ class Clientes extends MX_Controller{
 		$this->mi_session->verificar_inactividad();
 	}
 
-	function index(){
+	/*function index(){
 		$this->mostrar();
-	}
+	}*/
 
 	
 	
@@ -44,7 +44,8 @@ class Clientes extends MX_Controller{
 	    	else
 	    	{
 	    		 
-			      $filas = $this->global_model->total_posts_paginados($this->input->post('buscarcliente'));
+			      $filas = $this->global_model->total_posts_paginados($this->input->post('buscarcliente'),$this->session->userdata('id_usuario'));
+			      
 			      $data = array(
 					'filas' => $filas
 					
@@ -104,6 +105,18 @@ class Clientes extends MX_Controller{
 		$this->load->view('detallescliente',$data);
 		
 	}
+
+	function accionElegidaDetalle($contrato,$opcion){
+		$filas = $this->global_model->detallecliente($contrato,$opcion);
+
+		$data(array(
+			'filas' =>  $filas,
+		 ));
+			
+
+	}
+
+
 
     /*function mostrarcliente()
 	{

@@ -2,10 +2,10 @@
 
 <!-- COMPLEX TO DO LIST --> 
 <ol class="breadcrumb">
-                          <li class="active">Detalle Cliente</li>
-                          <li class="active">/Total Mensualidad <i class="fa fa-money"></i> <span class="badge bg-theme">RD$<?php //echo APERTURACAJA ?></span></li>
-                          <li class="active">/Total Caja <i class="fa fa-money"></i> <span class="badge bg-theme">RD$<?php //echo CAJACHICA ?></span></li>
-                          <li class="active">/Balance Total <i class="fa fa-money"></i> <span class="badge bg-theme">RD$ <?= $Balance ?></span></li>
+                          <li class="active">Detalle Cliente <span class="badge bg-theme"><?=$Contrato?></span> </li>
+                          <li class="active">Total Mensualidad <i class="fa fa-money"></i> <span class="badge bg-theme">RD$<?php //echo APERTURACAJA ?></span></li>
+                          <li class="active">Total Caja <i class="fa fa-money"></i> <span class="badge bg-theme">RD$<?php //echo CAJACHICA ?></span></li>
+                          <li class="active">Balance Total <i class="fa fa-money"></i> <span class="badge bg-theme">RD$ <?= $Balance ?></span></li>
                           
                            </ol>    
               <div class="row mt">
@@ -29,7 +29,7 @@
                                              <span class="input-group-addon">
                                               <i class="fa fa-list-alt"></i>
                                             </span>
-                                             <select name="id_operador" class="form-control">
+                                             <select name="menu" class="form-control">
 
                                                  <option value="fc" >Pago Mensualidad</option>
                                                  <option value="sb">Caja Digital</option>
@@ -44,7 +44,7 @@
                                         <table class="table table-bordered">
                                           <thead> 
                                             <tr>
-                                                <th>ID</th>
+                                                <th>NUMERO</th>
                                                 <th>CONCEPTO</th>
                                                 <th>MONTO</th>
                                                 <th>PAGADO</th>

@@ -826,7 +826,7 @@ class Global_model extends CI_Model {
         $query = "";
 
         if ($opcion == CONSULTA_MENSUALIDAD) {
-            var_dump("hola");
+            //var_dump("hola");
             $query = "CALL spandroidbbalances( ?, 'fc')";
         } elseif ($opcion == CONSULTA_CAJA) {
             $query = "CALL spandroidbbalances( ?, 'sb')";
@@ -858,9 +858,6 @@ class Global_model extends CI_Model {
 
 
     }
-
-
-
 
 
     function total_posts_paginados($stringContrato,$stringImei)
