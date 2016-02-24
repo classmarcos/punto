@@ -46,7 +46,7 @@ $contrato = array(
              
               );
 
-if($Estatus == 'DESCONECTADO'){
+if($Estatus == 'DESCONECTADO' || $Estatus == 'DESACTIVADO'){
   $estatus = array(
               'name'        => 'Estatus',
               'id'          => 'Estatus',
