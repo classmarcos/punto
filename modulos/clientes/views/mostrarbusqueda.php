@@ -42,7 +42,7 @@
             <ul class="tooltip-gestion list-inline">
                 <li>
                     <a href="javascript:void(0)" class="btn btn-info btn-xs" title="Pagar" class="text-info"
-                       onclick="modal('fila=<?=$r->Contrato.';'.$r->Nombre.';'.$r->Cedula.';'.$r->Estatus.';'.$r->Direccion?>','<?= base_url().'clientes/pagar'?>','.modal-body','.modal','')">Pagar </a>
+                       onclick="modal('fila=<?=$r->Contrato.';'.$r->Nombre.';'.$r->Cedula.';'.$r->Estatus.';'.$r->Direccion.';'.$r->Balance?>','<?= base_url().'clientes/pagar'?>','.modal-body','.modal','')">Pagar </a>
                 </li>
 
         </td>

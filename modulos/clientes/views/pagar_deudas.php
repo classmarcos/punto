@@ -1,7 +1,5 @@
 <?php 
 
-
-
 $nombre = array(
               'name'        => 'Nombre',
               'id'          => 'Nombre',
@@ -64,17 +62,17 @@ if($Estatus == 'DESCONECTADO'){
 }else{
 
 $estatus = array(
-              'name'        => 'Estatus',
-              'id'          => 'Estatus',
-              'value'       => $Estatus,
-              'placeholder' => 'Estatus',
-              'type'        => 'text',
-              'class'       => 'form-control',
-              'required'    => '""',
-              'readonly'    => 'true',
-              'style'       =>  'color:green;'
-             
-              );
+            'name'        => 'Estatus',
+            'id'          => 'Estatus',
+            'value'       => $Estatus,
+            'placeholder' => 'Estatus',
+            'type'        => 'text',
+            'class'       => 'form-control',
+            'required'    => '""',
+            'readonly'    => 'true',
+            'style'       =>  'color:green;'
+           
+            );
   
 }
 
@@ -89,15 +87,15 @@ $montoapagar = array(
               );
 
   $balancetotal = array(
-                                  'name'        => 'Balance',
-                                  'id'          => 'Balance',
-                                  'value'       =>'',// $r->Balance,
-                                  'type'        => 'text',
-                                  'placeholder' => 'Balance Total',
-                                  'class'       => 'form-control',
-                                  'required'    => '""',
-                                  'readonly'    => 'true'
-                                  );
+                  'name'        => 'Balance',
+                  'id'          => 'Balance',
+                  'value'       => $Balance,
+                  'type'        => 'text',
+                  'placeholder' => 'Balance Total',
+                  'class'       => 'form-control',
+                  'required'    => '""',
+                  'readonly'    => 'true'
+                  );
 
 
 ?>
