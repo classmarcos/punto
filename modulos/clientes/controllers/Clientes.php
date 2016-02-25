@@ -13,13 +13,6 @@ class Clientes extends MX_Controller{
 		$this->mi_session->verificar_inactividad();
 	}
 
-	/*function index(){
-		$this->mostrar();
-	}*/
-
-	
-	
-
 	
      function formulariobusquedacliente()
     {
@@ -74,6 +67,8 @@ class Clientes extends MX_Controller{
 	    	 $Direccion = $myArray[4];
 	    	 $Balance = $myArray[5];
 	    	 $CodEstatus = $myArray[6];
+	    	 $BalanceCaja = $myArray[7];
+	    	 $BalanceMensualidad = $Balance-$BalanceCaja;
 	    	
 		      $data = array(
 		      	'Contrato' => $Contrato,
@@ -82,9 +77,11 @@ class Clientes extends MX_Controller{
 				'Estatus' => $Estatus,
 				'Direccion' => $Direccion,
 				'Balance' => $Balance,
-				'CodEstatus' => $CodEstatus
+				'CodEstatus' => $CodEstatus,
+				'BalanceCaja' =>$BalanceCaja,
+				'BalanceMensualidad' =>$BalanceMensualidad
 		     );
-			 $this->load->view('pagar',$data);
+			 $this->load->view('pagar_deudas',$data);
 		 }
 	    else
 	    {
@@ -100,6 +97,8 @@ class Clientes extends MX_Controller{
 
 	    	 $Contrato = $myArray[0];
 	    	 $Balance = $myArray[1];
+	    	 $BalanceCaja = $myArray[2];
+	    	 $BalanceMensualidad = $Balance-$BalanceCaja;
 
 		     $mensualidad = $this->global_model->detallecliente($Contrato,'mensualidad');
 		     $caja = $this->global_model->detallecliente($Contrato,'caja');
@@ -109,6 +108,8 @@ class Clientes extends MX_Controller{
 				'caja' =>$caja,
 				'Contrato' =>$Contrato,
 				'Balance' =>$Balance,
+				'BalanceCaja' =>$BalanceCaja,
+				'BalanceMensualidad' =>$BalanceMensualidad
 				
 		     );
 				

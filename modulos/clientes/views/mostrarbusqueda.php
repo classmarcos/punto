@@ -32,7 +32,7 @@
         <td><?= $r->Cedula?></td>
         <td><?= $r->Direccion?></td>
         <td> 
-           <a href="javascript:void(0)" onclick="modal('fila=<?php echo $r->Contrato.';'.$r->Balance ?>','<?php echo base_url(); ?>clientes/mostrarDetalle','.modal-body','.modal','')"><span class="badge bg-theme"><?=$r->Balance //echo $this->global_model->metodoanteguo('caja_chica','cuente','','id_grupo',$r->id_grupo);?></span></a>
+           <a href="javascript:void(0)" onclick="modal('fila=<?php echo $r->Contrato.';'.$r->Balance.';'.$r->BalanceCaja ?>','<?php echo base_url(); ?>clientes/mostrarDetalle','.modal-body','.modal','')"><span class="badge bg-theme"><?=$r->Balance //echo $this->global_model->metodoanteguo('caja_chica','cuente','','id_grupo',$r->id_grupo);?></span></a>
         </td>
         <td><?= $r->Estatus?> </td>
         <td><?= $r->CodigoEstatus?> </td>
@@ -44,7 +44,7 @@
             <ul class="tooltip-gestion list-inline">
                 <li>
                     <a href="javascript:void(0)" class="btn btn-info btn-xs" title="Pagar" class="text-info"
-                       onclick="modal('fila=<?=$r->Contrato.';'.$r->Nombre.';'.$r->Cedula.';'.$r->Estatus.';'.$r->Direccion.';'.$r->Balance.';'.$r->CodigoEstatus?>','<?= base_url().'clientes/pagar'?>','.modal-body','.modal','')">Pagar </a>
+                       onclick="modal('fila=<?=$r->Contrato.';'.$r->Nombre.';'.$r->Cedula.';'.$r->Estatus.';'.$r->Direccion.';'.$r->Balance.';'.$r->CodigoEstatus.';'.$r->BalanceCaja?>','<?= base_url().'clientes/pagar'?>','.modal-body','.modal','')">Pagar </a>
                 </li>
 
         </td>

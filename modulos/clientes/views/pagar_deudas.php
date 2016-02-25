@@ -77,8 +77,8 @@ $estatus = array(
 }
 
 $montoapagar = array(
-              'name'        => 'Balance',
-              'id'          => 'Balance',
+              'name'        => 'montoapagar',
+              'id'          => 'montoapagar',
               'value'       =>  '',
               'type'        => 'number',
               'placeholder' => 'Monto a Pagar',
@@ -90,8 +90,8 @@ $montoapagar = array(
   $balancetotal = array(
                   'name'        => 'Balance',
                   'id'          => 'Balance',
-                  'value'       => $Balance,
-                  'type'        => 'number',
+                  'value'       => $BalanceMensualidad,
+                  'type'        => 'text',
                   'placeholder' => 'Balance Total',
                   'class'       => 'form-control',
                   'required'    => '""',
@@ -101,6 +101,9 @@ $montoapagar = array(
 
 ?>
 
+
+
+</script>
 
 
     <?php $claseFormulario = array('id' =>'formularioCrear' , ); ?>
@@ -182,20 +185,33 @@ $montoapagar = array(
          </div>
 
           <div class="form-group">
+          <?php
+                        $type_array = array('0' => 'Pago Mensualidad','1' => 'Caja Digital');
+                        if(in_array($CodEstatus, array(1,4,12,13)))
+                            $type_array[] = 'Pago de Reconexión';
+
+                        ?>
             <label class="control-label inputs">Acci&oacute;n</label>
              <div class="input-group">
                <span class="input-group-addon">
                 <i class="fa fa-list-alt"></i>
               </span>
-               <select name="id_operador" class="form-control">
+               <select name="id_accion" class="form-control">
+                <?php
+                                foreach ($type_array as $key => $value) {
+                                    echo '<option value="' . $key . '">'. $value . '</option>';
 
 
+
+                                } ?>
+
+<!--
 
                    <option value="1" >Pago Mensualidad</option>
                    <option value="2">Caja Digital</option>
                    <option value="3">Reconexi&oacute;n</option>
 
-
+-->
 
 
 
@@ -275,4 +291,24 @@ $montoapagar = array(
 
 		 </script>
 
-		  <?php //$this->output->enable_profiler(TRUE); ?>
+		  <?php //$this->output->enable_profiler(TRUE); 
+         
+      ?>
+
+
+<script type="text/javascript">
+
+$(document).ready(function(){
+
+  $("select[name=id_accion]").change(function(){
+    
+    if($('select[name=id_accion]').val()==0){
+       $('input[name=Balance]').val("<?php echo $BalanceMensualidad;?>");
+    }else if($('select[name=id_accion]').val()==1){
+       $('input[name=Balance]').val("<?php echo $BalanceCaja;?>");
+    }else if($('select[name=id_accion]').val()==2){
+        $('input[name=Balance]').val("200.00");
+    }
+           
+  });
+});

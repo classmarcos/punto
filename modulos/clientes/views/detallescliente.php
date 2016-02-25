@@ -12,8 +12,8 @@
 <!-- COMPLEX TO DO LIST --> 
 <ol class="breadcrumb">
                           <li class="active">Detalle Contrato <span class="badge bg-theme"> <?=$Contrato?></span> </li>
-                          <li class="active">Balance Mensualidad <i class="fa fa-money"></i> <span class="badge bg-theme">RD$<?php //echo APERTURACAJA ?></span></li>
-                          <li class="active">Balance Caja <i class="fa fa-money"></i> <span class="badge bg-theme">RD$<?php //echo CAJACHICA ?></span></li>
+                          <li class="active">Balance Mensualidad <i class="fa fa-money"></i> <span class="badge bg-theme">RD$<?=$BalanceMensualidad ?></span></li>
+                          <li class="active">Balance Caja <i class="fa fa-money"></i> <span class="badge bg-theme">RD$<?=$BalanceCaja ?></span></li>
                           <li class="active">Balance Total <i class="fa fa-money"></i> <span class="badge bg-theme">RD$ <?=$Balance?></span></li>
                           
                            </ol>    
