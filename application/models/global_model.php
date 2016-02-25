@@ -891,6 +891,38 @@ class Global_model extends CI_Model {
     }
 
 
+
+
+    function get_user_detail($parameter,$type){
+
+
+        if ($this->session->userdata('id_usuario') === NULL){
+            return ;
+        }
+
+
+
+        //192.168.10.147
+        $url = 'http://127.0.0.1:8080/codprueba/index.php/main/detallecliente/' . $type;
+
+        $data = array('usuario' => $this->session->userdata('id_usuario'), 'contrato' =>  $parameter);
+        $options = array(
+            'http' => array(
+                'method'  => 'POST',
+                'header'  => 'Content-type: application/x-www-form-urlencoded',
+                'content' => http_build_query($data)
+            )
+        );
+
+        $context  = stream_context_create($options);
+        $result = file_get_contents($url, false, $context);
+        $json_a = json_decode($result,true);
+
+        return $json_a ;
+
+    }
+
+
     /*function total_posts_paginados($abuscar, $por_pagina, $segmento)
     {
 
