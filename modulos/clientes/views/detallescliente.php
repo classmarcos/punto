@@ -2,7 +2,7 @@
   if(isset($mensualidad["error"]) || isset($caja["error"]))
   {
       echo "Actualmente no hay Registros";
-  }//V0400201A
+  }//V0400201A   - color: #449d44
   else
   {
   ?>
