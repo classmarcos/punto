@@ -1,19 +1,19 @@
 <?php 
-  if(isset($filas["error"]))
+  if(isset($mensualidad["error"]) && isset($caja["error"]))
   {
       echo "Actualmente no hay Registros";
-  }//V0400201A
+  }//V0400201A   - color: #449d44
   else
   {
   ?>
 
-  
+
 
 <!-- COMPLEX TO DO LIST --> 
 <ol class="breadcrumb">
-                          <li class="active">Detalle Cliente </span> </li>
-                          <li class="active">Total Mensualidad <i class="fa fa-money"></i> <span class="badge bg-theme">RD$<?php //echo APERTURACAJA ?></span></li>
-                          <li class="active">Total Caja <i class="fa fa-money"></i> <span class="badge bg-theme">RD$<?php //echo CAJACHICA ?></span></li>
+                          <li class="active">Detalle Contrato <span class="badge bg-theme"> <?=$Contrato?></span> </li>
+                          <li class="active">Balance Mensualidad <i class="fa fa-money"></i> <span class="badge bg-theme">RD$<?php //echo APERTURACAJA ?></span></li>
+                          <li class="active">Balance Caja <i class="fa fa-money"></i> <span class="badge bg-theme">RD$<?php //echo CAJACHICA ?></span></li>
                           <li class="active">Balance Total <i class="fa fa-money"></i> <span class="badge bg-theme">RD$ <?=$Balance?></span></li>
                           
                            </ol>    
@@ -22,7 +22,7 @@
 
                       <section class="task-panel tasks-widget">
                     <div class="panel-heading">
-                          <div class="pull-left"><h5><i class="fa  fa-table"></i> Detalle de Pendientes</h5></div>
+                          <div class="pull-left"><h5 style="color:#000;"><i class="fa  fa-table"></i> Detalle de Pendientes</h5></div>
                           <br>
                     </div>
                           <div class="panel-body">
@@ -30,26 +30,9 @@
 
                                   <ul class="task-list">
 
-                                  <li>
-                                    <div class="col-md-5 col-md-offset-1">
-                                       <div class="form-group">
-                                          <label class="control-label inputs">Acci&oacute;n</label>
-                                           <div class="input-group">
-                                             <span class="input-group-addon">
-                                              <i class="fa fa-list-alt"></i>
-                                            </span>
-                                             <select name="menu" class="form-control">
-
-                                                 <option value="fc" >Pago Mensualidad</option>
-                                                 <option value="sb">Caja Digital</option>
-
-                                             </select>
-                                            </div>
-                                       </div>  
-                                     </div>
-                                  </li>
+                                  
                                       <li>
-                                          
+                                        
                                         <table class="table table-bordered">
                                           <thead> 
                                             <tr>
@@ -62,7 +45,8 @@
                                                 
                                             </tr>
                                             </thead>  
-                                            <?php foreach($filas as $r):?>
+                                            <?php if(!isset($mensualidad["error"])){
+                                              foreach($mensualidad as $r):?>
                                             <tbody> 
                                             <tr>
 
@@ -72,18 +56,33 @@
                                                 <td> <?=$r->Pagado?>    </td>
                                                 <td> <?=$r->Fecha?>     </td>
                                                 <td> <?=$r->Balance?>   </td>
-                                             
-                                                   
-                                                   
+    
                                               </tr>
 
                                             </tbody>
                                             
-                                             <?php endforeach;?>
-                                           </table>
+                                             <?php endforeach;}?>
 
-                                       
-                                              
+                                            <?php if(!isset($caja["error"])){
+                                              foreach($caja as $r):
+                                                
+                                            ?>
+                                            <tbody> 
+                                            <tr>
+
+                                                <td> <?=$r->Numero?>   </td>
+                                                <td> <?=$r->Concepto?> </td>
+                                                <td> <?=$r->Monto?>     </td>
+                                                <td> <?=$r->Pagado?>    </td>
+                                                <td> <?=$r->Fecha?>     </td>
+                                                <td> <?=$r->Balance?>   </td>
+    
+                                              </tr>
+
+                                            </tbody>
+                                            
+                                             <?php endforeach;}?>
+                                           </table>
 
 
                                       </li>

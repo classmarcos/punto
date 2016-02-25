@@ -80,17 +80,18 @@ $montoapagar = array(
               'name'        => 'Balance',
               'id'          => 'Balance',
               'value'       =>  '',
-              'type'        => 'text',
+              'type'        => 'number',
               'placeholder' => 'Monto a Pagar',
               'class'       => 'form-control',
-              'required'    => '""'
+              'required'    => '""',
+              'autocomplete'=> 'off'
               );
 
   $balancetotal = array(
                   'name'        => 'Balance',
                   'id'          => 'Balance',
                   'value'       => $Balance,
-                  'type'        => 'text',
+                  'type'        => 'number',
                   'placeholder' => 'Balance Total',
                   'class'       => 'form-control',
                   'required'    => '""',
