@@ -1,5 +1,5 @@
 <?php 
-  if(isset($mensualidad["error"]) || isset($caja["error"]))
+  if(isset($mensualidad["error"]) && isset($caja["error"]))
   {
       echo "Actualmente no hay Registros";
   }//V0400201A   - color: #449d44
@@ -45,7 +45,8 @@
                                                 
                                             </tr>
                                             </thead>  
-                                            <?php foreach($mensualidad as $r):?>
+                                            <?php if(!isset($mensualidad["error"])){
+                                              foreach($mensualidad as $r):?>
                                             <tbody> 
                                             <tr>
 
@@ -60,9 +61,12 @@
 
                                             </tbody>
                                             
-                                             <?php endforeach;?>
+                                             <?php endforeach;}?>
 
-                                            <?php foreach($caja as $r):?>
+                                            <?php if(!isset($caja["error"])){
+                                              foreach($caja as $r):
+                                                
+                                            ?>
                                             <tbody> 
                                             <tr>
 
@@ -77,7 +81,7 @@
 
                                             </tbody>
                                             
-                                             <?php endforeach;?>
+                                             <?php endforeach;}?>
                                            </table>
 
 

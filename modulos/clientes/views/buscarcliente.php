@@ -21,7 +21,7 @@ $buscarcliente = array(
                       <div class="row">
                          <div class="col-md-5 col-md-offset-3">
                                <div class="form-group">
-                                  <label class="control-label inputs" style="color:#000;">Busqueda de Clientes</label>
+                                  <label class="control-label inputs" style="color:#000; font-family:arial;">Busqueda de Clientes</label>
                                    <div class="input-group">
 
                                       <?php echo form_input($buscarcliente); ?>
