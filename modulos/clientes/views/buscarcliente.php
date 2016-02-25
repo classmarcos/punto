@@ -45,6 +45,16 @@ $buscarcliente = array(
   <script type="text/javascript">
       $(document).ready(function()
       {
+        $("#buscarcliente").keyup(function(event){
+          if(event.keyCode == 13){
+            
+           $(this).trigger("enterKey");
+                event.preventDefault();
+                busqueda('buscarcliente='+$('#buscarcliente').val()+ "%",'<?php echo base_url(); ?>clientes/buscarcliente','#busqueda');
+           
+          }
+        });
+
          $("#btn_buscar").on('click',function(event)
          {
             event.preventDefault();
