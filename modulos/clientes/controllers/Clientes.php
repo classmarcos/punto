@@ -120,6 +120,52 @@ class Clientes extends MX_Controller{
 
 
 
+	 function credit_info(){
+		//$this->chequeousuario->estara_en_sesion(true);
+
+
+
+			/*$type = $this->input->post('type');
+			$parameter = $this->input->post('parameter');*/
+
+			$type = 'caja';
+			$parameter = 'V0400201A%';
+
+
+			$cred_info = $this->global_model->get_user_detail($parameter, $type);
+
+
+			$sumBalance['Balance'] = 0;
+			if ($cred_info['resultado'] !== null) {
+				foreach ($cred_info['resultado'] as $value) {
+					foreach ($value as $id => $valuetwo) {
+						$id === "Balance" ? (isset($sumBalance[$id]) ? $sumBalance[$id] += $valuetwo : $sumBalance[$id] = $valuetwo) : '';
+					}
+				}
+			}
+
+			$totalRecords = count($cred_info['resultado']);
+			$results = $cred_info['resultado'];
+
+			$json_output = array(
+				'total' => 0,
+				'page' => 0,
+				'records' => $totalRecords,
+				'rows' => $results,
+				'sumBalance' => number_format($sumBalance['Balance'], 2)
+			);
+
+			echo json_encode($json_output);
+
+	}
+
+
+
+
+
+
+
+
     /*function mostrarcliente()
 	{
 		if($this->input->is_ajax_request())
