@@ -15,20 +15,21 @@
             <div class="panel panel-default panel-primary text-primary">
                 <div class="panel-heading text-center">Datos clientes</div>
                 <ul class="list-group">
-                    <li class="list-group-item"><strong>Cliente: </strong><?=  $basic_info['Nombre']; ?>
+
+                    <li class="list-group-item"><strong>Cliente: </strong><?=  $Nombre;?>
                     </li>
-                    <li <?= $basic_info['Estatus'] == "DESCONECTADO" ? "class='list-group-item red'" : "class='list-group-item'"  ?>><strong>Estatus: </strong><?=  $basic_info['Estatus']; ?>
+                    <li <?= $Estatus == "DESCONECTADO" ? "class='list-group-item red'" : "class='list-group-item'"  ?>><strong>Estatus: </strong><?=  $Estatus; ?>
                     </li>
-                    <li class="list-group-item"><strong>Contrato: </strong><?php echo $basic_info['Contrato']; ?>
+                    <li class="list-group-item"><strong>Contrato: </strong><?php echo $Contrato; ?>
                     </li>
-                    <li class="list-group-item"><strong>Cedula: </strong><?php echo $basic_info['Cedula']; ?>
+                    <li class="list-group-item"><strong>Cedula: </strong><?php echo $Cedula; ?>
                     </li>
-                    <li class="list-group-item"><strong>Dirección: </strong><?php echo $basic_info['Direccion']; ?>
+                    <li class="list-group-item"><strong>Dirección: </strong><?php echo $Direccion; ?>
                     </li>
                     <li class="list-group-item">
                         <?php
                         $type_array = array('0' => 'Pago Mensualidad','1' => 'Caja Digital');
-                        if(in_array($basic_info['CodigoEstatus'], array(1,4,12,13)))
+                        if(in_array($CodEstatus, array(1,4,12,13)))
                             $type_array[] = 'Pago de Reconexión';
 
                         ?>
@@ -149,18 +150,19 @@ echo form_dropdown('type', $type_array, '');
 		<div class="col-md-1"> <button name='btn_pagar_monto' role='button' class="btn btn-primary">Pagar</button></div>
 	</div>
 </div>  -->
-
+ <!--
 <?php if (isset($pagos_adelantados) && $pagos_adelantados) {
     echo '<form id="form_pagos_adelantados" action="' . site_url('cliente/pagos_adelantados/') .'" method="post">
                         <input type="hidden" name="contrato" value="' . $pagos_adelantados . '">
                    </form> '; }?>
 
 <?php if (isset($extensiones) && $extensiones) {
-    echo '<form id="form_extensiones" action="' . site_url('cliente/extensiones/') .'" method="post">
+   echo '<form id="form_extensiones" action="' . site_url('cliente/extensiones/') .'" method="post">
                         <input type="hidden" name="contrato" value="' . $basic_info['Contrato'] . '">
                         <input type="hidden" name="nombre" value="' . $basic_info['Nombre']  . '">
                         <input type="hidden" name="cedula" value="' . $basic_info['Cedula']  . '">
                         <input type="hidden" name="direccion" value="' . $basic_info['Direccion'] . '">
-                   </form> '; }?>
+                   </form> ';}?>
+                   -->
 
                  

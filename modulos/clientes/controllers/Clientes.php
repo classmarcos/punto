@@ -73,6 +73,7 @@ class Clientes extends MX_Controller{
 	    	 $Estatus = $myArray[3];
 	    	 $Direccion = $myArray[4];
 	    	 $Balance = $myArray[5];
+	    	 $CodEstatus = $myArray[6];
 	    	
 		      $data = array(
 		      	'Contrato' => $Contrato,
@@ -80,9 +81,10 @@ class Clientes extends MX_Controller{
 	  			'Cedula' => $Cedula,
 				'Estatus' => $Estatus,
 				'Direccion' => $Direccion,
-				'Balance' => $Balance
+				'Balance' => $Balance,
+				'CodEstatus' => $CodEstatus
 		     );
-			 $this->load->view('pagar_deudas',$data);
+			 $this->load->view('pagar',$data);
 		 }
 	    else
 	    {
