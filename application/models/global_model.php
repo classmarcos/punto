@@ -868,14 +868,13 @@ class Global_model extends CI_Model {
 
         if (isset($object) || $object) {
 
-            $this->output
-                ->set_content_type('application/json')
-                ->set_output(json_encode($object,JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE | JSON_HEX_TAG));
+            $this->output->set_content_type('application/json')->set_output(json_encode($object));
         }
     }
 
 
-    function pagos($stringContrato, $stringImei, $dblmonto, $opcion, $idcargos, $intcajas, $tipo_pago, $insert, $intcantmeses, $dbldescuento, $dblmensualidad, $dbldescuentocalculado){
+    function pagos($stringContrato, $stringImei, $dblmonto, $opcion, $idcargos, $intcajas, $tipo_pago, $insert, $intcantmeses, $dbldescuento, $dblmensualidad, $dbldescuentocalculado)
+    {
 
        /* define("PAGO_MENSUALIDAD", "mensualidad");
         define("PAGO_CAJA", "caja");
@@ -943,7 +942,9 @@ class Global_model extends CI_Model {
             $valor = -2;
         }
 
-        $this->mensaje($valor,$resultado->result());
+
+
+       return json_encode(array("resultado" => $row->result, "Id" => $valor));
 
     }
 

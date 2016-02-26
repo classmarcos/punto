@@ -770,13 +770,19 @@ class Usuarios extends MX_Controller {
 	function hola()
 	{
 
+		if ($this->session->userdata('id_usuario') === NULL){
+			return ;
+		}
 
+		$stringImei = $this->session->userdata('id_usuario');
 
 		//var_dump($this->session->userdata('id_usuario'));
 
 		//var_dump($this->global_model->detallecliente('V0400201A','caja'));
 
-		var_dump($this->global_model->pagos('A0000801A','1007','85','mensualidad','','','','','','','',''));
+		$string_insert = '' + "," + '' + "," + '5' + "," + '';
+
+		var_dump($this->global_model->pagos('A0000801A',$stringImei,'5','mensualidad','','','',$string_insert,'','','',''));
 
 		//var_dump($this->global_model->total_posts_paginados($this->input->post('buscarusuario'),$this->session->userdata('id_usuario')));
 	}
