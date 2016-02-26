@@ -782,7 +782,25 @@ class Usuarios extends MX_Controller {
 
 		$string_insert = '' + "," + '' + "," + '5' + "," + '';
 
-		var_dump($this->global_model->pagos('A0000801A',$stringImei,'5','mensualidad','','','',$string_insert,'','','',''));
+		//var_dump($this->global_model->pagos('A0000801A',$stringImei,'5','mensualidad','','','',$string_insert,'','','',''));
+
+		$json = $this->global_model->pagos('A0000801A',$stringImei,'5','mensualidad','','','',$string_insert,'','','','');
+		$json = stripslashes($json);
+		//$json = json_decode($json);
+
+		$resp = json_decode($json, true);
+
+		 if(isset($resp["resultado"])){
+				$TRN = $resp["Id"];
+
+			   echo $TRN;
+			}
+		else{
+				echo "No Existe";
+			}
+
+
+
 
 		//var_dump($this->global_model->total_posts_paginados($this->input->post('buscarusuario'),$this->session->userdata('id_usuario')));
 	}
