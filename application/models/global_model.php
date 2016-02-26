@@ -856,6 +856,69 @@ class Global_model extends CI_Model {
     }
 
 
+    function pagos($stringContrato, $stringImei, $dblmonto, $opcion, $idcargos, $intcajas, $tipo_pago, $insert, $intcantmeses, $dbldescuento, $dblmensualidad, $dbldescuentocalculado){
+
+        define("PAGO_MENSUALIDAD", "mensualidad");
+        define("PAGO_CAJA", "caja");
+        define("PAGO_CAJA2", "caja2");
+        define("PAGO_EXTENSIONES", "extension");
+        define("PAGO_RECONEXION", "reconexion");
+        define("PAGO_ADELANTADO", "adelantados");
+
+        $resultado = "";
+
+        if ($opcion == PAGO_MENSUALIDAD) {
+            $string_tipoPago = "FC";
+            $query = "CALL cxcandroid(?,?,?,?,?,?);";
+            $resultado = $this->db->query($query, array($stringContrato, $dblmonto, $string_tipoPago, $stringImei, $tipo_pago, $insert));
+        } elseif ($opcion == PAGO_CAJA) {
+            $string_tipoPago = "SB";
+            $query = "CALL cxcandroid(?,?,?,?,?,?);";
+            $resultado = $this->db->query($query, array($stringContrato, $dblmonto, $string_tipoPago, $stringImei, $tipo_pago, $insert));
+        } elseif ($opcion == PAGO_EXTENSIONES){
+            $string_tipoPago = "EX";
+            $query = "CALL spandroidcobrar( ? , ?, ?, ? , ?, ?, ?);";//efect EF CK TA,
+            $resultado = $this->db->query($query, array($stringContrato, $dblmonto, $string_tipoPago, $stringImei, $intcajas, $tipo_pago, $insert));
+        } elseif ($opcion == PAGO_CAJA2){
+            $string_tipoPago = "SB";
+            $query = "CALL spandroidcobrar( ? , ?, ?, ? , ?, ?, ?);";
+            $resultado = $this->db->query($query, array($stringContrato, $dblmonto, $string_tipoPago, $stringImei, $intcajas, $tipo_pago, $insert));
+        } elseif ($opcion == PAGO_RECONEXION){
+            $query = "CALL spandroidreconectar(?,?,?,?,?);";
+            $resultado = $this->db->query($query, array($stringContrato, $dblmonto, $stringImei, $tipo_pago, $insert));
+        } elseif ($opcion == PAGO_ADELANTADO) {
+            $query = "CALL spandroidadelantado(?,?,?,?,?,?,?,?)";
+            $resultado = $this->db->query($query, array($stringContrato, $dblmonto, $stringImei, $intcantmeses, $dbldescuentocalculado , $intcajas, $dbldescuento, $dblmensualidad));
+        } else {
+            return "opcion invalida";
+        }
+
+
+
+        $row = new stdClass();
+        $row->result = $resultado->result();
+        $row->num_rows = $resultado->num_rows();
+
+        $resultado->next_result(); //la libreria fue modificada para tener este parametro dentro de mysqli_result
+        $resultado->free_result();
+
+
+
+        if($row->num_rows > 0)
+        {
+            return $row->result;
+        }
+        else
+        {
+            $datos["error"] = TRUE;
+        }
+        return $datos;
+
+        return $resultado;
+    }
+
+
+
     function total_posts_paginados($stringContrato,$stringImei)
     {
 
@@ -891,6 +954,31 @@ class Global_model extends CI_Model {
     }
 
 
+
+     function get_user_data($parameter)
+    {
+
+        if ($this->session->userdata('id_usuario') === NULL){
+            return ;
+        }
+        //192.168.10.147
+        $url = 'http://127.0.0.1:8080/codprueba/index.php/main/consultacliente'; //'http://tcentral.ddns.net:8080/Clientela/db_ODC.php'; 192.168.10.147:8080/Clientela/PruebaDBp.php http://tcentral.ddns.net:8080/Clientela/PruebaDBp.php
+        //013495003102438
+        $data = array('usuario' => $this->session->userdata('id_usuario'), 'contrato' =>  $parameter);
+        $options = array(
+            'http' => array(
+                'method'  => 'POST',
+                'header'  => 'Content-type: application/x-www-form-urlencoded',
+                'content' => http_build_query($data)
+            )
+        );
+
+        $context  = stream_context_create($options);
+        $result = file_get_contents($url, false, $context);
+        $json_a = json_decode($result,true);
+
+        return $json_a;
+    }
 
 
     function get_user_detail($parameter,$type){
