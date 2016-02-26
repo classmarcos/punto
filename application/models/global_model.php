@@ -818,7 +818,9 @@ class Global_model extends CI_Model {
 
     function detallecliente($stringCriterio, $opcion){
 
-
+         if ($this->session->userdata('id_usuario') === NULL){
+            return ;
+        }
         $query = "";
 
         if ($opcion == "mensualidad") {
@@ -875,37 +877,39 @@ class Global_model extends CI_Model {
 
     function pagos($stringContrato, $stringImei, $dblmonto, $opcion, $idcargos, $intcajas, $tipo_pago, $insert, $intcantmeses, $dbldescuento, $dblmensualidad, $dbldescuentocalculado){
 
-        define("PAGO_MENSUALIDAD", "mensualidad");
+       /* define("PAGO_MENSUALIDAD", "mensualidad");
         define("PAGO_CAJA", "caja");
         define("PAGO_CAJA2", "caja2");
         define("PAGO_EXTENSIONES", "extension");
         define("PAGO_RECONEXION", "reconexion");
-        define("PAGO_ADELANTADO", "adelantados");
+        define("PAGO_ADELANTADO", "adelantados");*/
 
-
+         if ($this->session->userdata('id_usuario') === NULL){
+            return ;
+        }
 
         $resultado = "";
 
-        if ($opcion == PAGO_MENSUALIDAD) {
+        if ($opcion == 'mensualidad') {
             $string_tipoPago = "FC";
             $query = "CALL cxcandroid(?,?,?,?,?,?);";
             $resultado = $this->db->query($query, array($stringContrato, $dblmonto, $string_tipoPago, $stringImei, $tipo_pago, $insert));
-        } elseif ($opcion == PAGO_CAJA) {
+        } elseif ($opcion == 'caja') {
             $string_tipoPago = "SB";
             $query = "CALL cxcandroid(?,?,?,?,?,?);";
             $resultado = $this->db->query($query, array($stringContrato, $dblmonto, $string_tipoPago, $stringImei, $tipo_pago, $insert));
-        } elseif ($opcion == PAGO_EXTENSIONES){
+        } elseif ($opcion == 'PAGO_EXTENSIONES'){
             $string_tipoPago = "EX";
             $query = "CALL spandroidcobrar( ? , ?, ?, ? , ?, ?, ?);";//efect EF CK TA,
             $resultado = $this->db->query($query, array($stringContrato, $dblmonto, $string_tipoPago, $stringImei, $intcajas, $tipo_pago, $insert));
-        } elseif ($opcion == PAGO_CAJA2){
+        } elseif ($opcion == 'PAGO_CAJA2'){
             $string_tipoPago = "SB";
             $query = "CALL spandroidcobrar( ? , ?, ?, ? , ?, ?, ?);";
             $resultado = $this->db->query($query, array($stringContrato, $dblmonto, $string_tipoPago, $stringImei, $intcajas, $tipo_pago, $insert));
-        } elseif ($opcion == PAGO_RECONEXION){
+        } elseif ($opcion == 'reconexion'){
             $query = "CALL spandroidreconectar(?,?,?,?,?);";
             $resultado = $this->db->query($query, array($stringContrato, $dblmonto, $stringImei, $tipo_pago, $insert));
-        } elseif ($opcion == PAGO_ADELANTADO) {
+        } elseif ($opcion == 'PAGO_ADELANTADO') {
             $query = "CALL spandroidadelantado(?,?,?,?,?,?,?,?)";
             $resultado = $this->db->query($query, array($stringContrato, $dblmonto, $stringImei, $intcantmeses, $dbldescuentocalculado , $intcajas, $dbldescuento, $dblmensualidad));
         } else {
@@ -950,6 +954,9 @@ class Global_model extends CI_Model {
 
         //$stringContrato = 'A0000101A';
         //$stringImei = '170';
+        if ($this->session->userdata('id_usuario') === NULL){
+            return ;
+        }
 
         $query = "CALL spandroidbcontratos( ? , ? )";
 
