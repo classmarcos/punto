@@ -769,8 +769,14 @@ class Usuarios extends MX_Controller {
 
 	function hola()
 	{
-		var_dump($this->session->userdata('id_usuario'));
-		var_dump($this->global_model->detallecliente('V0400201A','caja'));
+
+
+
+		//var_dump($this->session->userdata('id_usuario'));
+
+		//var_dump($this->global_model->detallecliente('V0400201A','caja'));
+
+		var_dump($this->global_model->pagos('A0000801A','1007','85','mensualidad','','','','','','','',''));
 
 		//var_dump($this->global_model->total_posts_paginados($this->input->post('buscarusuario'),$this->session->userdata('id_usuario')));
 	}

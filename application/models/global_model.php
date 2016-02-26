@@ -856,6 +856,23 @@ class Global_model extends CI_Model {
     }
 
 
+
+    private function mensaje($id = 0, $mensaje = array()){
+        //var_dump( $mensaje);
+        $this->show(array("resultado" => $mensaje, "Id" => $id));
+    }
+
+    private function show($object){
+
+        if (isset($object) || $object) {
+
+            $this->output
+                ->set_content_type('application/json')
+                ->set_output(json_encode($object,JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE | JSON_HEX_TAG));
+        }
+    }
+
+
     function pagos($stringContrato, $stringImei, $dblmonto, $opcion, $idcargos, $intcajas, $tipo_pago, $insert, $intcantmeses, $dbldescuento, $dblmensualidad, $dbldescuentocalculado){
 
         define("PAGO_MENSUALIDAD", "mensualidad");
@@ -864,6 +881,8 @@ class Global_model extends CI_Model {
         define("PAGO_EXTENSIONES", "extension");
         define("PAGO_RECONEXION", "reconexion");
         define("PAGO_ADELANTADO", "adelantados");
+
+
 
         $resultado = "";
 
@@ -904,17 +923,24 @@ class Global_model extends CI_Model {
 
 
 
-        if($row->num_rows > 0)
-        {
-            return $row->result;
-        }
-        else
-        {
-            $datos["error"] = TRUE;
-        }
-        return $datos;
 
-        return $resultado;
+        if ($resultado === "opcion invalida") {
+
+            return "Datos incompletos";
+        }
+
+        $valor = 100;
+
+        if ($row->num_rows < 1){
+            $valor = -1;
+        }
+
+        if ($row->result[0]->TRN < 1) {
+            $valor = -2;
+        }
+
+        $this->mensaje($valor,$resultado->result());
+
     }
 
 
