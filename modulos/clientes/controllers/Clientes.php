@@ -96,30 +96,55 @@ class Clientes extends MX_Controller{
     function realizarPago(){
     	if($this->input->is_ajax_request())
         {
-        	
+        	if(!isset($datos["filas"]["error"]))
+			{
+				
 
-	    	$Contrato = $this->input->post('Contrato');
-	    	$Monto = $this->input->post('Montoapagar');
-	    	if($this->input->post('id_accion')==0){
-	    		$Type ='mensualidad' ;
-	    	}elseif ($this->input->post('id_accion')==1) {
-	    		$Type ='caja' ;
-	    	}elseif ($this->input->post('id_accion')==2) {
-	    		$Type ='reconexion' ;
-	    	}
+			 
+				if(!$this->input->post('enviado'))
+				{
+					//$this->load->view('pagar_deudas',$datos);
+				}
+				else
+				{
+					$Nombre = $this->input->post('Nombre');
+					$Cedula = $this->input->post('Nombre');
+			    	$Contrato = $this->input->post('Cedula');
+			    	$Direccion = $this->input->post('Direccion');
+			    	$Monto = $this->input->post('Montoapagar');
+			    	$CodEstatus=$this->input->post('id_accion');
+			    	$Estatus = $this->input->post('Estatus');
+			    	if($CodEstatus==0){
+			    		$Type ='mensualidad' ;
+			    	}elseif ($CodEstatus==1) {
+			    		$Type ='caja' ;
+			    	}elseif ($CodEstatus==2) {
+			    		$Type ='reconexion' ;
+			    	}
 
-	    	
-	    	$StringImei =$this->session->userdata('id_usuario');
+			    	$StringImei =$this->session->userdata('id_usuario');
 
-	    	$resultado =  $this->global_model->pagos($Contrato,$StringImei,$Monto,$Type,'','','','','','','','');
+			    	$respuesta =  $this->global_model->pagos($Contrato,$StringImei,$Monto,$Type,'','','','','','','','');
 
-	    	$data = array(
-	    		'resultado' =>$resultado );
+			    	$resp = json_decode($respuesta, true);
 
-	    	return $data;
+						 if(isset($resp["resultado"])){
+								$TRN = $resp["Id"];
+								if($TRN == 100){
+									$pagado['pagado' ]='Pago realizado exitosamente' ;
+			   
 
-	    	//$this->load->view('pagar_deudas',$data);
-	        
+			    					$this->load->view('pagar_deudas',$pagado);
+								}
+							}
+						else{
+								echo "No Existe";
+							}
+
+
+			    	
+	        	}
+			}     
 	    }
 		else
 	    {
