@@ -89,6 +89,44 @@ class Clientes extends MX_Controller{
 	    }	
     }
 
+    function ejemplopagar(){
+    	var_dump($this->global_model->pagos('A0000801A','1007','85','mensualidad','','','','','','','',''));
+    }
+
+    function realizarPago(){
+    	if($this->input->is_ajax_request())
+        {
+        	
+
+	    	$Contrato = $this->input->post('Contrato');
+	    	$Monto = $this->input->post('Montoapagar');
+	    	if($this->input->post('id_accion')==0){
+	    		$Type ='mensualidad' ;
+	    	}elseif ($this->input->post('id_accion')==1) {
+	    		$Type ='caja' ;
+	    	}elseif ($this->input->post('id_accion')==2) {
+	    		$Type ='reconexion' ;
+	    	}
+
+	    	
+	    	$StringImei =$this->session->userdata('id_usuario');
+
+	    	$resultado =  $this->global_model->pagos($Contrato,$StringImei,$Monto,$Type,'','','','','','','','');
+
+	    	$data = array(
+	    		'resultado' =>$resultado );
+
+	    	return $data;
+
+	    	//$this->load->view('pagar_deudas',$data);
+	        
+	    }
+		else
+	    {
+	    	show_404();
+	    }	
+    }
+
     function mostrarDetalle(){
     	if($this->input->is_ajax_request())
         {
