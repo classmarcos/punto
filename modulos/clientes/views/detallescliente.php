@@ -35,28 +35,30 @@
                                         
                                         <table class="table table-bordered">
                                           <thead> 
-                                            <tr>
-                                                <th>NUMERO</th>
+                                            <tr>  
+                                                <th>N&Uacute;MERO</th>
                                                 <th>CONCEPTO</th>
+                                                <th>TIPO</th>
+                                                <th>FECHA</th>
                                                 <th>MONTO</th>
                                                 <th>PAGADO</th>
-                                                <th>FECHA</th>
                                                 <th>BALANCE</th>
-                                                
+                                              
                                             </tr>
                                             </thead>  
                                             <?php if(!isset($mensualidad["error"])){
                                               foreach($mensualidad as $r):?>
                                             <tbody> 
                                             <tr>
-
+                                                 
                                                 <td> <?=$r->Numero?>   </td>
                                                 <td> <?=$r->Concepto?> </td>
+                                                <td>MENSUALIDAD</td>
+                                                <td> <?=$r->Fecha?>     </td>
                                                 <td> <?=$r->Monto?>     </td>
                                                 <td> <?=$r->Pagado?>    </td>
-                                                <td> <?=$r->Fecha?>     </td>
                                                 <td> <?=$r->Balance?>   </td>
-    
+                                               
                                               </tr>
 
                                             </tbody>
@@ -69,14 +71,15 @@
                                             ?>
                                             <tbody> 
                                             <tr>
-
+                                                
                                                 <td> <?=$r->Numero?>   </td>
                                                 <td> <?=$r->Concepto?> </td>
+                                                <td>CAJA DIGITAL</td>
+                                                <td> <?=$r->Fecha?>     </td>
                                                 <td> <?=$r->Monto?>     </td>
                                                 <td> <?=$r->Pagado?>    </td>
-                                                <td> <?=$r->Fecha?>     </td>
                                                 <td> <?=$r->Balance?>   </td>
-    
+                                                
                                               </tr>
 
                                             </tbody>

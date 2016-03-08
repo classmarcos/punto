@@ -52,7 +52,7 @@
                     <div class="col-md-3 col-sm-3 mb">
                         <div class="white-panel pn">
                             <div class="white-header">
-                                <h5>Reponer caja</h5>
+                                <h5 style="color:black;">Pagar Servicios</h5>
                             </div>
                             <div class="row">
                                 <div class="col-sm-6 col-xs-6 goleft">

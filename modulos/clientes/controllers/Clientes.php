@@ -60,15 +60,14 @@ class Clientes extends MX_Controller{
 	    	 $filas = $this->input->post('fila');
 	    	 $myArray = explode(';', $filas);
 
+
 	    	 $Contrato = $myArray[0];
 	    	 $Nombre = $myArray[1];
 	    	 $Cedula = $myArray[2];
 	    	 $Estatus = $myArray[3];
 	    	 $Direccion = $myArray[4];
 	    	 $Balance = $myArray[5];
-	    	 $CodEstatus = $myArray[6];
-	    	 $BalanceCaja = $myArray[7];
-	    	 $BalanceMensualidad = $Balance-$BalanceCaja;
+	    	 $accion = $myArray[6];
 	    	
 		      $data = array(
 		      	'Contrato' => $Contrato,
@@ -76,11 +75,11 @@ class Clientes extends MX_Controller{
 	  			'Cedula' => $Cedula,
 				'Estatus' => $Estatus,
 				'Direccion' => $Direccion,
+				'accion'=>$accion,
 				'Balance' => $Balance,
-				'CodEstatus' => $CodEstatus,
-				'BalanceCaja' =>$BalanceCaja,
-				'BalanceMensualidad' =>$BalanceMensualidad
+				'Montoapagar'=>''
 		     );
+		    
 			 $this->load->view('pagar_deudas',$data);
 		 }
 	    else
@@ -90,61 +89,77 @@ class Clientes extends MX_Controller{
     }
 
     function ejemplopagar(){
-    	var_dump($this->global_model->pagos('A0000801A','1007','85','mensualidad','','','','','','','',''));
+
+    	$datos= $this->global_model->pagos('A0002901A','1007','1','mensualidad','','','','','','','','');
+    	$resp = json_decode($datos, true);
+    	//var_dump("");
+    	//foreach ($resp as $key) {
+    		var_dump( $resp);
+    		//var_dump($resp['resultado']);
+    		//var_dump($resp['TRN']);
+
+    		//echo $resp["resultado"];
+    	//}
     }
 
     function realizarPago(){
     	if($this->input->is_ajax_request())
         {
-        	if(!isset($datos["filas"]["error"]))
-			{
-				
+ 
+			$Nombre = $this->input->post('Nombre');
+			$Cedula = $this->input->post('Cedula');
+	    	$Contrato = $this->input->post('Contrato');
+	    	$Direccion = $this->input->post('Direccion');
+	    	$Monto = $this->input->post('Montoapagar');
+	    	$accion=$this->input->post('id_accion');
+	    	$Estatus = $this->input->post('Estatus');
+	    	$Balance = $this->input->post('Balance');
+	    	
+	    	if($accion==1){
+	    		$Type ='mensualidad' ;
+	    	}elseif ($accion==2) {
+	    		$Type ='caja' ;
+	    	}elseif ($accion==3) {
+	    		$Type ='reconexion' ;
+	    	}
+
+	    	$StringImei =$this->session->userdata('id_usuario');
+
+	    	$json =  $this->global_model->pagos($Contrato,$StringImei,$Monto,$Type,'','','','','','','','');
+
+			$resp = json_decode($json, true);
 
 			 
-				if(!$this->input->post('enviado'))
-				{
-					//$this->load->view('pagar_deudas',$datos);
-				}
-				else
-				{
-					$Nombre = $this->input->post('Nombre');
-					$Cedula = $this->input->post('Nombre');
-			    	$Contrato = $this->input->post('Cedula');
-			    	$Direccion = $this->input->post('Direccion');
-			    	$Monto = $this->input->post('Montoapagar');
-			    	$CodEstatus=$this->input->post('id_accion');
-			    	$Estatus = $this->input->post('Estatus');
-			    	if($CodEstatus==0){
-			    		$Type ='mensualidad' ;
-			    	}elseif ($CodEstatus==1) {
-			    		$Type ='caja' ;
-			    	}elseif ($CodEstatus==2) {
-			    		$Type ='reconexion' ;
-			    	}
+			 			
+				if(isset($resp["resultado"])){
+					if($resp["Id"]==100){
+					
+		    			
+    			
 
-			    	$StringImei =$this->session->userdata('id_usuario');
-
-			    	$respuesta =  $this->global_model->pagos($Contrato,$StringImei,$Monto,$Type,'','','','','','','','');
-
-			    	$resp = json_decode($respuesta, true);
-
-						 if(isset($resp["resultado"])){
-								$TRN = $resp["Id"];
-								if($TRN == 100){
-									$pagado['pagado' ]='Pago realizado exitosamente' ;
-			   
-
-			    					$this->load->view('pagar_deudas',$pagado);
-								}
-							}
-						else{
-								echo "No Existe";
-							}
-
-
-			    	
-	        	}
-			}     
+					 $data = array(
+				      	'Contrato' => $Contrato,
+			      		'Nombre' => $Nombre,
+			  			'Cedula' => $Cedula,
+						'Estatus' => $Estatus,
+						'Direccion' => $Direccion,
+						'Balance' => $Balance,
+						'accion' => $accion,
+						'pagado'=>'Pago realizado exitosamente',
+						'Montoapagar'=>$Monto,
+						'TRN' =>$resp["resultado"][0]['TRN'],
+						'fecha'=>$resp["resultado"][0]["Fecha"],
+						'usuario'=>$resp["resultado"][0]["Nombre"],
+						'conceptoPago' =>$resp["resultado"][0]["ConceptoPago"]
+					
+		     		);
+					 }
+					$this->load->view('pagar_deudas',$data);
+					
+				}else{
+						echo "No Existe";
+					}
+	     
 	    }
 		else
 	    {
@@ -229,7 +244,17 @@ class Clientes extends MX_Controller{
 	}
 
 
+	function facturar(){
+		if($this->input->is_ajax_request())
+        {
 
+			$this->load->view('factura');
+		}
+		else
+	    {
+	    	show_404();
+	    }	
+	}
 
 
 

@@ -231,7 +231,7 @@ function grupos(id, div, url, defaultt)
     });   
 }
 
-function modal(id,url,div,modal,tipomodal)
+function modal(id,url,div,modal,tipomodal,concept)
 {
   if (tipomodal == 1) // 1 upload //// vacio normal
   {
@@ -249,6 +249,7 @@ function modal(id,url,div,modal,tipomodal)
             {
                  $(modal).modal({ keyboard:true}, 'show');
                  $(div).html('Cargando <i class="fa fa-refresh fa-spin"></i>');
+                 document.getElementById("myModalLabel").innerHTML = concept;
             },
             success: function(data)
             {
@@ -257,6 +258,8 @@ function modal(id,url,div,modal,tipomodal)
                   if(modal != "")
                       $(modal).modal('show');
                       $(div).html(data);
+                      document.getElementById("myModalLabel").innerHTML = concept;
+                     
               }
             },
         });
@@ -273,6 +276,7 @@ function modal(id,url,div,modal,tipomodal)
               {
                    $(modal).modal({ keyboard:true}, 'show');
                    $(div).html('Cargando <i class="fa fa-refresh fa-spin"></i>');
+                   document.getElementById("myModalLabel").innerHTML = concept;
               },
               success: function(data)
               {
@@ -281,6 +285,7 @@ function modal(id,url,div,modal,tipomodal)
                     if(modal != "")
                         $(modal).modal('show');
                         $(div).html(data);
+                        document.getElementById("myModalLabel").innerHTML = concept;
                 }
               },
           });
