@@ -1045,6 +1045,34 @@ class Global_model extends CI_Model {
     }
 
 
+
+
+
+    public function make_reconection($contract, $mount)
+    {
+        if ($this->session->userdata('id_usuario') === NULL){
+            return ;
+        }
+
+        $url = 'http://127.0.0.1:8080/tcentral/index.php/main/reconexion'; //http://192.168.10.147:8080/Clientela/PruebaDBp.php //'http://tcentral.ddns.net:8080/Clientela/db_ODC.php';
+        $data = array('codigo' => $this->session->userdata('id_usuario'), 'contrato' =>  $contract, 'monto' => $mount);
+
+        $options = array(
+            'http' => array(
+                'method'  => 'POST',
+                'header'  => 'Content-type: application/x-www-form-urlencoded',
+                'content' => http_build_query($data)
+            )
+        );
+
+        $context  = stream_context_create($options);
+        $result = file_get_contents($url, false, $context);
+        $json_a = json_decode($result,true);
+
+        return $json_a;
+    }
+
+
     /*function total_posts_paginados($abuscar, $por_pagina, $segmento)
     {
 

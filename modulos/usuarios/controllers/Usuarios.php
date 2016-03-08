@@ -802,8 +802,13 @@ class Usuarios extends MX_Controller {
 
 
 
+
+
+
 		//var_dump($this->global_model->total_posts_paginados($this->input->post('buscarusuario'),$this->session->userdata('id_usuario')));
 	}
+
+
 
 
 
@@ -884,6 +889,36 @@ class Usuarios extends MX_Controller {
 	    	show_404();
 	    }	
     }
+
+
+	public function pago_reconexion(){
+
+		if ($this->session->userdata('id_usuario') === NULL){
+			return ;
+		}
+
+		$this->load->model('global_model');
+
+		$type = $this->input->post('type') ? $this->input->post('type') : "0";
+		
+		$mount = $this->input->post('mount') ? $this->input->post('mount') : "100";
+		$contract = $this->input->post('contract') ? $this->input->post('contract') : "N0170001A";
+
+		$mount = '200';
+		$contract = 'T0000001A';
+
+		$cred_info = NULL;
+
+		$cred_info = $this->global_model->make_reconection($contract,  $mount);
+
+		echo json_encode($cred_info);
+
+		//echo ($cred_info);
+		//$cred_info = (object) array_merge( (array)$cred_info, array( 'balance_anterior' => $balance_anterior, 'mount' => $mount, 'contract' => $contract));
+
+	}
+
+
 
 	public function estadistica()
 	{
