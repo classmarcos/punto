@@ -103,8 +103,9 @@ $contrato = array(
               
               <div class="col-md-12">
                 <h3 style="text-align:center;color:orange; margin-botton:0px;padding:0px;">A0000501A</h3>
-                <h3 style="text-align:center;color:#07ADB9;margin-top:0px;"> Arlette Espinal Romero</h3>
+                <h3 id="espacio" style="text-align:center;color:#07ADB9;margin-top:0px;"> Arlette Espinal Romero Romero</h3>
               </div>
+
               <div class="col-md-5 col-md-offset-1">
                   <div class="form-group">
                      <div class="input-group" >
