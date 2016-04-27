@@ -82,7 +82,7 @@
         <?php $this->load->view($section);?>
     </div>
 
-    <?php $this->load->view($footer);?>
+    <?php //$this->load->view($footer);?>
 
 </section>
 </body>

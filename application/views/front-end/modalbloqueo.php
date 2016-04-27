@@ -10,6 +10,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default btn-sm" data-dismiss="modal"><i class="fa fa-times"></i> Cerrar</button>
+            
             </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->

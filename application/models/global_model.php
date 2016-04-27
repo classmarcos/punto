@@ -812,7 +812,41 @@ class Global_model extends CI_Model {
         return  $row->num_rows;
 
     }
+ function buscarBancos(){
 
+         if ($this->session->userdata('id_usuario') === NULL){
+            return ;
+        }
+        $query = "";
+
+        
+        $query = "select Codigo,Descripcion from cxcbancos order by Descripcion";
+     
+
+        $consulta = $this->db->query($query);
+
+        $row = new stdClass();
+        $row->result = $consulta->result();
+        $row->num_rows = $consulta->num_rows();
+
+        //$consulta->next_result(); //la libreria fue modificada para tener este parametro dentro de mysqli_result
+        $consulta->free_result();
+
+
+
+        if($row->num_rows > 0)
+        {
+            return $row->result;
+        }
+        else
+        {
+            $datos["error"] = TRUE;
+        }
+        return $datos;
+
+
+
+    }
 
 
 
@@ -1054,7 +1088,7 @@ class Global_model extends CI_Model {
             return ;
         }
 
-        $url = 'http://127.0.0.1:8080/tcentral/index.php/main/reconexion'; //http://192.168.10.147:8080/Clientela/PruebaDBp.php //'http://tcentral.ddns.net:8080/Clientela/db_ODC.php';
+        $url = 'http://192.168.10.77:8080/tcentral/index.php/main/reconexion'; //http://192.168.10.147:8080/Clientela/PruebaDBp.php //'http://tcentral.ddns.net:8080/Clientela/db_ODC.php';
         $data = array('codigo' => $this->session->userdata('id_usuario'), 'contrato' =>  $contract, 'monto' => $mount);
 
         $options = array(
@@ -1066,8 +1100,11 @@ class Global_model extends CI_Model {
         );
 
         $context  = stream_context_create($options);
-        $result = file_get_contents($url, false, $context);
+        $result = file_get_contents($url,false, $context);
+      
         $json_a = json_decode($result,true);
+
+       // var_dump($json_a);
 
         return $json_a;
     }

@@ -4,23 +4,10 @@
         <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
     </div>
     <!--logo start-->
-    <a href="index.html" class="logo"><b>DASHGUM FREE</b></a>
-    <!--logo end-->
-    <div class="nav notify-row" id="top_menu">
-        <!--  notification start -->
-        <ul class="nav top-menu">
-            <!-- settings start -->
-            <li class="dropdown">
+ 
+    <a href="#" class="logo" style="color:black;"><b>TELENORD</b></a>
+    
 
-
-                <!-- settings end -->
-                <!-- inbox dropdown start-->
-
-            </li>
-            <!-- inbox dropdown end -->
-        </ul>
-        <!--  notification end -->
-    </div>
 
     <div class="top-menu">
         <ul class="nav pull-right top-menu">
@@ -33,3 +20,20 @@
 
 </header>
 <!--header end-->
+
+<script language="javascript">
+    
+/* Set the width of the side navigation to 250px and the left margin of the page content to 250px and add a black background color to body */
+function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+    document.getElementById("main").style.marginLeft = "250px";
+    document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+}
+
+/* Set the width of the side navigation to 0 and the left margin of the page content to 0, and the background color of body to white */
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+    document.getElementById("main").style.marginLeft = "0";
+    document.body.style.backgroundColor = "white";
+}
+</script>

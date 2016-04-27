@@ -183,7 +183,7 @@ function busqueda(id, url, div)
         data: id,
         beforeSend: function ()
         {
-             $(div).html('cargando <i class="fa fa-spinner"></i>');
+            $(div).html('cargando <i class="fa fa-spinner"></i>');
         },
         success: function(data)
         {
@@ -292,6 +292,8 @@ function modal(id,url,div,modal,tipomodal,concept)
      }
 }
 
+
+
 function getEstadoSistema(data)
 {
   if(data == 0)
@@ -335,7 +337,7 @@ function Bloquear_Sistema()
                                   '<h4 class="modal-title">Modo: "Sistema Bloqueado"</h4>'+
                              '</div>'+
                              '<div class="modal-body">'+
-                                  '<p class="text-center text-info"><strong>Por favor inicie sessión para desbloquear la pantalla:</strong></p>'+
+                                  '<p class="text-center text-info" ><strong style="color:#FF6C10;">Por favor inicie sessión para desbloquear la pantalla:</strong></p>'+
                                   '<div id="msj_alert_modal"></div>'+
                                    '<div class="form-group">'+
                                         '<label for="txtusuario">Usuario</label>'+

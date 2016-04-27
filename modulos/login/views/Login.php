@@ -57,7 +57,7 @@ $clave = array(
         <?php echo form_close(); ?>
 
         <label class="checkbox">
-            <a href="#">&#191;Olvidaste Tu Contrase&ntilde;a?</a>
+            <a href="#" style="text-decoration:none; color:#FF6C10;">&#191;Olvidaste Tu Contrase&ntilde;a?</a>
         </label>
 
         <hr>
@@ -79,7 +79,6 @@ $clave = array(
 
         endif;
         ?>
-
 
     </div>
 

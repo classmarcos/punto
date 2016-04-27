@@ -1,0 +1,56 @@
+<div style="text-align: right;">
+	<span style="">@date@</span><br />
+	<span style="">Recibo #: @id_invoice@</span>
+</div>
+
+<div style="text-align: center; margin-top: -25px; padding:0;">
+	<span style="font-size: 1.5em;"><strong>TELEOPERADORA DEL NORDESTE</strong></span><br />
+	<span style="font-size: 1.5em;"><strong>(TELENORD)</strong></span><br />
+	<span style="font-size: 1.2em;"><strong>@direccion_empresa@</strong></span><br />
+	<span style="font-size: 1.2em;"><strong>@ciudad_empresa@</strong></span><br />
+	<span style="font-size: 1.2em;"><strong>Tel: @telefono_empresa@ Fax: @fax_empresa@</strong></span><br />
+	<span style="font-size: 1.2em;"><strong>RNC: @rnc_empresa@</strong></span><br />
+</div>
+
+<div style="text-align: center;  margin-top: 2em;">
+	<span style="display: block; font-size: 1.5em;">RECIBO</span>
+</div>
+
+<div style="border-top: dashed 1px black; border-bottom: dashed 1px black; margin-top: 1em;">
+	<span style="margin-top: 1em;"><strong>Contrato:</strong>@contract@ - @cliente@</span><br/>
+	<span style="margin-top: 1em; padding-bottom: 1em;"><strong>Balance Anterior:</strong> @BAnterior@</span>
+</div>
+
+<table style="width:100%; border-bottom: dashed 1px black; font-size: 1.2em;">
+	<tr>
+		<th style="width:70%; text-align:left;">Concepto</th>
+		<th style="width:30%; text-align:left;">Monto Pagado</th>
+	</tr>
+</table>
+
+<table style="width:100%; border-bottom: dashed 1px black;">
+	@table_body@
+</table>
+
+<table style="width:100%; border-bottom: dashed 1px black;">
+	<tr>
+		<td style="width:70%; text-align:left;"><strong>Monto Total Recibido</strong></td>
+		<td style="width:30%; text-align:left;"><div style="width: 40%; margin:0; padding:0; text-align: right;">@total@</div></td>
+	</tr>
+	<tr>
+		<td style="width:70%; text-align:left;"><strong>Pendiente</strong></td>
+		<td style="width:30%; text-align:left;"><div style="width: 40%; margin:0; padding:0; text-align: right;">@VPendiente@</div></td>
+	</tr>
+</table>
+
+<div style="text-align: center;  margin-top: 2em;">
+	<span style="display: block; font-size: 1.5em;">GRACIAS POR SU PAGO</span>
+</div>
+
+<div style="text-align: center;  margin-top: 2em;">
+	<span style="display: block; font-size: 1.5em;">Le atendio:<STRONG>@cobrador@</STRONG></span>
+</div>
+
+<div style="text-align: center;  margin-top: 2em;">
+	<span style="display: block; font-size: 1.5em;"><STRONG>*ABONO A FACTURA NO EVITA CORTE*</STRONG></span>
+</div>

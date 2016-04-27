@@ -48,6 +48,7 @@ class Login extends MX_Controller {
 		//var_dump($respuesta = $this->mi_session->entrar($usuario, $clave));
 
 	}
+	
 
 	function entrar()
 	{

@@ -5,8 +5,8 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 <h4 class="modal-title" id="myModalLabel">Datos</h4>
             </div>
-            <div class="modal-body">
-                <p class="cuerpoModal"></p>
+            <div class="modal-body" >
+                <p class="cuerpoModal" ></p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default btn-sm" data-dismiss="modal" ><i class="fa fa-times" ></i> Cerrar</button>

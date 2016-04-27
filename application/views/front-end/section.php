@@ -52,7 +52,7 @@
                     <div class="col-md-3 col-sm-3 mb">
                         <div class="white-panel pn">
                             <div class="white-header">
-                                <h5 style="color:black;">Pagar Servicios</h5>
+                                <h5 style="color:#FF6C10;">Pagar Servicios</h5>
                             </div>
                             <div class="row">
                                 <div class="col-sm-6 col-xs-6 goleft">
@@ -78,7 +78,7 @@
                                 <div class="col-sm-6 col-xs-6"></div>
                             </div>
                             <div class="centered">
-                                <a href="javascript:void(0)" class="btn btn-default btn-xs" onclick="mostrar('','<?php echo base_url(); ?>admin/reporte_cierre_caja','#resultado')"><img src="assets/img/cashbox.png" width="120"></a>
+                                <a href="javascript:void(0)" class="btn btn-default btn-xs" onclick="mostrar('','<?php echo base_url(); ?>clientes/pagar_servicios','#resultado')"><img src="assets/img/monei.png" width="120"></a>
                             </div>
                         </div>
                     </div><!-- /col-md-4 -->
